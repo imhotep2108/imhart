@@ -67,9 +67,11 @@
 %%%%%%%%%%%%%%%% Preamble %%%%%%%%%%%%%%%%
 
 \babelprovide[import,main]{english}
-\babelprovide[import]{french}
 \babelprovide[import]{chinese}
+\babelprovide[import]{french}
+\babelprovide[import]{german}
 \babelprovide[import]{russian}
+\babelprovide[import]{spanish}
 
 \babelfont{rm}[
     Extension       = .otf,
@@ -111,13 +113,6 @@
     % BoldItalicFont  = *
 ]{FandolFang-Regular}
 
-\setlocalecaption{chinese}{theorem}{定理}
-\setlocalecaption{chinese}{lemma}{引理}
-\setlocalecaption{chinese}{corollary}{推论}
-\setlocalecaption{chinese}{proposition}{命题}
-\setlocalecaption{chinese}{definition}{定义}
-\setlocalecaption{chinese}{solution}{解答}
-
 \setlocalecaption{english}{theorem}{Theorem}
 \setlocalecaption{english}{lemma}{Lemma}
 \setlocalecaption{english}{corollary}{Corollary}
@@ -146,13 +141,70 @@
 \setlocalecaption{english}{conclusion}{Conclusion}
 \setlocalecaption{english}{solution}{Solution}
 
+\setlocalecaption{chinese}{theorem}{定理}
+\setlocalecaption{chinese}{lemma}{引理}
+\setlocalecaption{chinese}{corollary}{推论}
+\setlocalecaption{chinese}{proposition}{命题}
+\setlocalecaption{chinese}{conjecture}{猜想}
+\setlocalecaption{chinese}{definition}{定义}
+\setlocalecaption{chinese}{problem}{问题}
+\setlocalecaption{chinese}{example}{例子}
+\setlocalecaption{chinese}{exercise}{练习}
+\setlocalecaption{chinese}{axiom}{公理}
+\setlocalecaption{chinese}{remark}{注释}
+\setlocalecaption{chinese}{solution}{解答}
+
 \setlocalecaption{french}{theorem}{Théorème}
+\setlocalecaption{french}{lemma}{Lemme}
+\setlocalecaption{french}{corollary}{Corollaire}
+\setlocalecaption{french}{proposition}{Proposition}
+\setlocalecaption{french}{conjecture}{Conjecture}
 \setlocalecaption{french}{definition}{Définition}
+\setlocalecaption{french}{problem}{Problème}
+\setlocalecaption{french}{example}{Exemple}
+\setlocalecaption{french}{exercise}{Exercice}
+\setlocalecaption{french}{axiom}{Axiome}
+\setlocalecaption{french}{remark}{Remarque}
 \setlocalecaption{french}{solution}{Solution}
 
+\setlocalecaption{german}{theorem}{Satz}
+\setlocalecaption{german}{lemma}{Lemma}
+\setlocalecaption{german}{corollary}{Korollar}
+\setlocalecaption{german}{proposition}{Proposition}
+\setlocalecaption{german}{conjecture}{Vermutung}
+\setlocalecaption{german}{definition}{Definition}
+\setlocalecaption{german}{problem}{Problem}
+\setlocalecaption{german}{example}{Beispiel}
+\setlocalecaption{german}{exercise}{Übung}
+\setlocalecaption{german}{axiom}{Axiom}
+\setlocalecaption{german}{remark}{Bemerkung}
+\setlocalecaption{german}{solution}{Lösung}
+
 \setlocalecaption{russian}{theorem}{Теорема}
+\setlocalecaption{russian}{lemma}{Лемма}
+\setlocalecaption{russian}{corollary}{Следствием}
+\setlocalecaption{russian}{proposition}{Предложение}
+\setlocalecaption{russian}{conjecture}{Гипотеза}
 \setlocalecaption{russian}{definition}{Определение}
+\setlocalecaption{russian}{problem}{Задача}
+\setlocalecaption{russian}{example}{Пример}
+\setlocalecaption{russian}{exercise}{Упражнение}
+\setlocalecaption{russian}{axiom}{Аксиома}
+\setlocalecaption{russian}{remark}{Замечание}
 \setlocalecaption{russian}{solution}{Решение}
+
+\setlocalecaption{spanish}{theorem}{Teorema}
+\setlocalecaption{spanish}{lemma}{Lema}
+\setlocalecaption{spanish}{corollary}{Corolario}
+\setlocalecaption{spanish}{proposition}{Proposición}
+\setlocalecaption{spanish}{conjecture}{Conjetura}
+\setlocalecaption{spanish}{definition}{Definición}
+\setlocalecaption{spanish}{problem}{Problema}
+\setlocalecaption{spanish}{example}{Ejemplo}
+\setlocalecaption{spanish}{exercise}{Ejercicio}
+\setlocalecaption{spanish}{axiom}{Axioma}
+\setlocalecaption{spanish}{remark}{Observación}
+\setlocalecaption{spanish}{solution}{Solución}
 
 \newif\ifhtpartlang@save
 \newif\ifhtpartlang@set
