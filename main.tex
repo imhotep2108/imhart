@@ -1,0 +1,244 @@
+\documentclass{htpart}
+\usepackage{htplogos}
+
+\title{The Real Numbers and The Integers}
+\author{Imhotep}
+\affil{Imhotep}
+\date{\today}
+
+\document
+
+\maketitle
+
+\begin{abstract}
+    This primer delivers a concise overview of real numbers and integers, covering their properties and construction.
+\end{abstract}
+
+\tableofcontents
+
+\listoftheorems[ignoreall,onlynamed]
+
+\begin{section}{Introduction}
+
+The theory of real numbers is not essential for understanding the fundamental concepts of calculus, but it is significant in terms of the comprehensiveness of the knowledge base.
+
+\end{section}
+
+\begin{section}{The Axiom System of the Set of the Real Numbers}
+
+\begin{definition}
+    We call a 4-tuple \(\left(\symbb{R},+,\cdot,\leqslant\right)\) that satisfies the following three axioms the real numbers.
+\end{definition}
+
+\begin{axiom}[The Field Axioms]\label{axiom:1.1}
+    \(\left(\symbb{R},+,\cdot\right)\) is a \emph{field}\index{field}, that is to say, let \(\symbb{R}\) be a set,
+    \begin{gather*}
+        +\colon\symbb{R}^2\to\symbb{R},\quad\left(x,y\right)\mapsto x+y,\\
+        \cdot\colon\symbb{R}^2\to\symbb{R},\quad\left(x,y\right)\mapsto x\cdot y
+    \end{gather*}
+    be two mappings, called \emph{addition}\index{addition} and \emph{multiplication}\index{multiplication}, respectively, satisfying the followings.
+    \begin{enumerate}
+        \item\label{item:1} For every \(a,b,c\in\symbb{R}\), \(\left(a+b\right)+c=a+\left(b+c\right)\), i.e. addition is \emph{associative}\index{associative law!of addition}.
+        \item\label{item:2} There exists a \(0\in\symbb{R}\), s.t. for every \(a\in\symbb{R}\), \(a+0=0+a=a\), and call 0 the \emph{additive identity}\index{identity!of addition}.
+        \item\label{item:3} For every \(a\in\symbb{R}\), there exists a \(-a\in\symbb{R}\), s.t. \(a+\left(-a\right)=\left(-a\right)+a=0\), and call \(-a\) the \emph{additive inverse}\index{inverse!of addition} or \emph{opposite}\index{opposite|seealso{inverse, of addition}} of \(a\).
+        \item\label{item:4} For every \(a,b\in\symbb{R}\), \(a+b=b+a\), i.e. addition is \emph{commutative}\index{commutative law!of addition}.
+        \item\label{item:5} For every \(a,b,c\in\symbb{R}-\set{0}\), \(\left(a\cdot b\right)\cdot c=a\cdot\left(b\cdot c\right)\), i.e. multiplication is \emph{associative}\index{associative law!of multiplication}.
+        \item\label{item:6} There exists a \(1\in\symbb{R}-\set{0}\), s.t. for every \(a\in\symbb{R}-\set{0}\), \(a\cdot1=1\cdot a=a\), and call 1 the \emph{multiplicative identity}\index{identity!of multiplication}.
+        \item For every \(a\in\symbb{R}-\set{0}\), there exists an \(a^{-1}\in\symbb{R}-\set{0}\), s.t. \(a\cdot a^{-1}=a^{-1}\cdot a=1\), and call \(a^{-1}\) the \emph{multiplicative inverse}\index{inverse!of multiplication} or \emph{reciprocal}\index{reciprocal|seealso{inverse, of multiplication}} of \(a\).
+        \item\label{item:8} For every \(a,b\in\symbb{R}-\set{0}\), \(a\cdot b=b\cdot a\), i.e. multiplication is \emph{commutative}\index{commutative law!of multiplication}.
+        \item\label{item:9} For every \(a,b,c\in\symbb{R}\), \(a\cdot\left(b+c\right)=\left(a\cdot b\right)+\left(a\cdot c\right)\), \(\left(b+c\right)\cdot a=\left(b\cdot a\right)+\left(c\cdot a\right)\), i.e. multiplication is \emph{distributive}\index{distributive law!of multiplication with respect to addition} with respect to addition.
+    \end{enumerate}
+\end{axiom}
+
+\begin{remark} 
+    \autoref{item:1}, \autoref{item:2}, and \autoref{item:3} establish that \(\left(\symbb{R},+\right)\) is a \emph{group}\index{group}. The satisfaction of \autoref{item:4} further implies that \(\left(\symbb{R},+\right)\) is an \emph{Abelian group}\index{group!Abelian} or \emph{commutative group}\index{group!commutative|seealso{group, Abelian}}. Analogously, \(\left(\symbb{R}^\times\coloneq\symbb{R}-\set{0},\cdot\right)\) is also an Abelian group.
+
+    Taking into account the validity of \autoref{item:1}, \autoref{item:2}, \autoref{item:3}, \autoref{item:5}, and \autoref{item:9}, we designate the structure \(\left(\symbb{R},+,\cdot\right)\) as a \emph{ring}\index{ring}. If \autoref{item:4} and \autoref{item:8} also hold true, it is asserted that \(\left(\symbb{R},+,\cdot\right)\) constitutes a \emph{commutative ring}\index{ring!commutative}.
+\end{remark}
+
+\begin{remark}
+    One usually writes \(x-y\), \(xy\) and \(\frac{x}{y}\) in place of \(x+\left(-y\right)\), \(x\cdot y\) and \(x\cdot y^{-1}\).
+\end{remark}
+
+\begin{axiom}[The Order Axioms]
+    Further, \(\left(\symbb{R},+,\cdot,\leqslant\right)\) is an ordered field, which means \(\left(\symbb{R},+,\cdot\right)\) is a field with total order \(\leqslant\) satisfying the followings.
+    \begin{enumerate}
+        \item For every \(a,b,c\in\symbb{R}\), if \(a\leqslant b\) then \(a+c\leqslant b+c\), i.e. order is compatible with addition.
+        \item For every \(a,b\in\symbb{R}\), if \(0\leqslant a\) and \(0\leqslant b\) then \(0\leqslant a\cdot b\), i.e. order is compatible with multiplication.
+    \end{enumerate}
+\end{axiom}
+
+Where an order is defined as follows.
+
+\begin{definition}
+    A partial order is a relation \(\leqslant\) on a set \(P\) satisfying the followings.
+    \begin{enumerate}
+        \item For every \(a\in P\), \(a\leqslant a\), i.e. order is reflexive.
+        \item For every \(a,b\in P\), if \(a\leqslant b\) and \(b\leqslant a\) then \(a=b\), i.e. order is antisymmetric.
+        \item For every \(a,b,c\in P\), if \(a\leqslant b\) and \(b\leqslant c\) then \(a\leqslant c\), i.e. order is transitive.
+    \end{enumerate}
+    And when for every \(a,b\in P\), at least one of \(a\leqslant b\) and \(b\leqslant a\) holds, i.e. \(\leqslant\) is connected or complete or total, we also call \(\leqslant\) a total order or linear order.
+\end{definition}
+
+\begin{remark}
+    \(a\leqslant b\) is also written \(b\geqslant a\). And if \(a\leqslant b\) and \(a\ne b\), we say \(a<b\). Similarly, we can define \(b>a\). Therefore, for every \(a,b\in\symbb{R}\), one and only one of the following three situations is true: \(x<y\), \(x=y\), \(x>y\).
+\end{remark}
+
+\begin{axiom}[The Completeness Axiom]
+    Let \(A\), \(B\) be two non-empty subset of \(\symbb{R}\), if for every \(a\in A\), \(b\in B\), we have \(a\leqslant b\), then there exists a \(c\in\symbb{R}\), s.t. for every \(a\in A\), \(b\in B\), we have \(a\leqslant c\leqslant b\).
+\end{axiom}
+
+\begin{remark}
+    So far, we have given the complete axiom system of real numbers, but it is not well-defined at present: we do not know whether such a real number theory is self-contradictory, we do not know whether such a real number theory is unique, and we have not even proven that such a 4-tuple \(\left(\symbb{R},+,\cdot,\leqslant\right)\) exists.
+\end{remark}
+
+\end{section}
+
+\begin{section}{Some General Algebraic Properties of Real Numbers}
+
+As a generalization of the field axioms and the order axioms, below we prove several algebraic properties of real numbers. Readers should pay special attention to conclusions that can be derived without commutativity.
+
+\begin{remark}
+    Unless otherwise stated, it is assumed that the letters \(a\), \(b\), \(c\), \(x\), etc. mentioned below are all real numbers.
+\end{remark}
+
+\begin{proposition}
+    \leavevmode
+    \begin{enumerate}
+        \item The additive identity 0 is unique.
+        \item For every \(a\in\symbb{R}\), the additive inverse of \(a\) is unique.
+        \item The multiplicative identity 1 is unique.
+        \item For every \(a\in\symbb{R}^\times\), the multiplicative inverse of \(a\) is unique.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    \leavevmode
+    \begin{enumerate}
+        \item If \(0_*\) and \(0_\dag\) are both additive identity in \(\symbb{R}\), then by definition, \[0_*=0_*+0_\dag=0_\dag.\]
+        \item If \(b\) and \(c\) are both additive inverse of \(a\in\symbb{R}\), then by definition,
+        \begin{align*}
+            b=b+0&=b+\left(a+c\right)\\
+            &=\left(b+a\right)+c=0+c=c.
+        \end{align*}
+        \item If \(1_*\) and \(1_\dag\) are both additive identity in \(\symbb{R}^\times\), then by definition, \[1_*=1_*\cdot1_\dag=1_\dag.\]
+        \item If \(b\) and \(c\) are both additive inverse of \(a\in\symbb{R}^\times\), then by definition, \[b=b\cdot1=b\cdot\left(a\cdot c\right)=\left(b\cdot a\right)\cdot c=1\cdot c=c.\qedhere\]
+    \end{enumerate}
+\end{proof}
+
+\begin{proposition}\label{proposition:1.2}
+    \leavevmode
+    \begin{enumerate}
+        \item\label{item:23} For every \(a,b\in\symbb{R}\), the equation \(a+x=b\) for \(x\) has the unique real solution \(x=-a+b\). In particular, for every \(a,b,c\in\symbb{R}\), if \(a+b=a+c\), then \(b=c\), i.e. the left cancellation law of addition holds in \(\symbb{R}\).
+        \item For every \(a,b\in\symbb{R}\), the equation \(x+a=b\) for \(x\) has the unique real solution \(x=b+\left(-a\right)\). In particular, for every \(a,b,c\in\symbb{R}\), if \(b+a=c+a\), then \(b=c\), i.e. the right cancellation law of addition holds in \(\symbb{R}\).
+        \item For every \(a\in\symbb{R}\), \(-\left(-a\right)=a\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    \leavevmode
+    \begin{enumerate}
+        \item This follows from the existence and uniqueness of the additive identity:
+        \begin{align*}
+            a+x=b&\iff-a+\left(a+x\right)=-a+b\\
+            &\iff\left(-a+a\right)+x=-a+b\\
+            &\iff0+x=-a+b\\
+            &\iff x=-a+b.
+        \end{align*}
+        If \(a+b=a+c\), applying the above, we have \[b=-a+\left(a+c\right)=\left(-a+a\right)+c=0+c=c.\]
+        \item A few minor modifications to the relevant parts of the above proof are sufficient.
+        \item Since \(-a+a=0\), applying \autoref{item:23} with \(-a\) and 0 in place of \(a\) and \(b\) respectively gives the conclusion.\qedhere
+    \end{enumerate}
+\end{proof}
+
+\begin{proposition}
+    \leavevmode
+    \begin{enumerate}
+        \item Multiplication is commutative in \(\symbb{R}\).
+        \item Multiplication is associative in \(\symbb{R}\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    \leavevmode
+    \begin{enumerate}
+        \item By the distributive law and the cancellation law, \[a\cdot1+a\cdot0=a\cdot\left(1+0\right)=a\cdot1=a\cdot1+0\] implies \(a\cdot0=0\), similarly \(0\cdot a=0=a\cdot0\). In particular, \autoref{item:6} in \autoref{axiom:1.1} also holds true in \(\symbb{R}\).
+        \item We only need to state that for every \(a,b\in\symbb{R}\),
+        \begin{gather*}
+            \left(a\cdot b\right)\cdot0=0=a\cdot0=a\cdot\left(b\cdot0\right),\\
+            \left(a\cdot0\right)\cdot b=0\cdot b=0=a\cdot0=a\cdot\left(0\cdot b\right),\\
+            \left(0\cdot a\right)\cdot b=0\cdot b=0=0\cdot\left(a\cdot b\right).\qedhere
+        \end{gather*}
+    \end{enumerate}
+\end{proof}
+
+\begin{proposition}
+    \leavevmode
+    \begin{enumerate}
+        \item\label{item:33} For every \(a\in\symbb{R}^\times\), \(b\in\symbb{R}\), the equation \(a\cdot x=b\) for \(x\) has the unique real solution \(x=a^{-1}\cdot b\). In particular, for every \(a\in\symbb{R}^\times\), \(b,c\in\symbb{R}\), if \(a\cdot b=a\cdot c\), then \(b=c\), i.e. the left cancellation law of multiplication holds in \(\symbb{R}^\times\).
+        \item For every \(a\in\symbb{R}^\times\), \(b\in\symbb{R}\), the equation \(x\cdot a=b\) for \(x\) has the unique real solution \(x=b\cdot a^{-1}\). In particular, for every \(a\in\symbb{R}^\times\), \(b,c\in\symbb{R}\), if \(b\cdot a=c\cdot a\), then \(b=c\), i.e. the right cancellation law of multiplication holds in \(\symbb{R}^\times\).
+        \item For every \(a\in\symbb{R}^\times\), \(\left(a^{-1}\right)^{-1}=a\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    \leavevmode
+    \begin{enumerate}
+        \item This follows from the existence and uniqueness of the multiplicative identity:
+        \begin{align*}
+            a\cdot x=b&\iff a^{-1}\cdot\left(a\cdot x\right)=a^{-1}\cdot b\\
+            &\iff\left(a^{-1}\cdot a\right)\cdot x=a^{-1}\cdot b\\
+            &\iff1\cdot x=a^{-1}\cdot b\\
+            &\iff x=a^{-1}\cdot b.
+        \end{align*}
+        If \(a\cdot b=a\cdot c\), applying the above, we have \[b=a^{-1}\cdot\left(a\cdot c\right)=\left(a^{-1}\cdot a\right)\cdot c=1\cdot c=c.\]
+        \item A few minor modifications to the relevant parts of the above proof are sufficient.
+        \item Since \(a^{-1}\cdot a=1\), applying \autoref{item:33} with \(a^{-1}\) and 1 in place of \(a\) and \(b\) respectively gives the conclusion.\qedhere
+    \end{enumerate}
+\end{proof}
+
+\begin{proposition}
+    \leavevmode
+    \begin{enumerate}
+        \item For every \(a,b\in\symbb{R}\), if \(a\cdot b=0\) then \(a=0\) or \(b=0\).
+        \item For every \(a,b\in\symbb{R}\), \(\left(-a\right)\cdot b=-\left(a\cdot b\right)=a\cdot\left(-b\right)\).
+        \item For every \(a,b\in\symbb{R}\), \(\left(-a\right)\cdot\left(-b\right)=a\cdot b\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    \leavevmode
+    \begin{enumerate}
+        \item If, for example, \(a\ne0\), then by the uniqueness of the solution of the equation \(a\cdot b=0\) for \(b\), we find \(b=a^{-1}\cdot0=0\).
+        \item The first equality comes from \[a\cdot b+\left(-a\right)\cdot b=\left(-a+a\right)\cdot b=0\cdot b=0,\] combined with \autoref{proposition:1.2}. The other half is proved in the same way.
+        \item \(\left(-a\right)\cdot\left(-b\right)=-\left(a\cdot\left(-b\right)\right)=-\left(-\left(a\cdot b\right)\right)=a\cdot b\).\qedhere
+    \end{enumerate}
+\end{proof}
+
+From now on, we will no longer pay attention to the algebraic properties of real numbers when the commutative law does not hold, and can use these formulas recklessly.
+
+\begin{proposition}
+    \leavevmode
+    \begin{enumerate}
+        \item If \(a\geqslant0\) then \(-a\leqslant0\), and vice versa.
+        \item If \(a\geqslant0\) and \(b\leqslant c\) then \(ab\leqslant ac\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    \leavevmode
+    \begin{enumerate}
+        \item If \(a\geqslant0\) then \(0=-a+a\geqslant-a+0\), so that \(-a\leqslant0\). If \(a\leqslant0\) then \(0=-a+a\leqslant-a+0\), so that \(-a\geqslant0\).
+        \item Since \(c\geqslant b\), we have \(c-b\geqslant b-b=0\), hence \(a\left(c-b\right)\geqslant0\), and therefore \[ac=a\left(c-b\right)+ab\geqslant0+ab=ab.\qedhere\]
+    \end{enumerate}
+\end{proof}
+
+\end{section}
+
+\printbibliography
+
+\printindex
+
+\enddocument
+
+Not Finished Yet
