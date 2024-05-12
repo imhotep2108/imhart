@@ -288,6 +288,8 @@
 \setmathfont[range=bb,StylisticSet=3]{NewCMMath-Book.otf}
 
 \providecommand*{\eu}{\ensuremath{\symup{e}}}
+\providecommand*{\iu}{\ensuremath{\symup{i}}}
+\providecommand*{\gammau}{\ensuremath{\symup{\gamma}}}
 \providecommand*{\piu}{\ensuremath{\symup{\pi}}}
 
 \theoremstyle{plain}
