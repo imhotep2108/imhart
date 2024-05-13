@@ -66,6 +66,7 @@
 
 \ifhtpart@hyper
 \RequirePackage{hyperref}
+\RequirePackage{cleveref}
 \fi
 
 %%%%%%%%%%%%%%%% Preamble %%%%%%%%%%%%%%%%
@@ -215,35 +216,33 @@
 \setlocalecaption{spanish}{summary}{Resumen}
 \setlocalecaption{spanish}{solution}{Solución}
 
-\ifhtpart@uchar
-\newif\ifhtpartlang@save
-\newif\ifhtpartlang@set
-\fi
+\newif\ifhtpartuchar@save
+\newif\ifhtpartuchar@set
 
 \ifhtpart@uchar
 \setTransitionsForCJK{%
-    \ifhtpartlang@save
-        \ifhtpartlang@set
+    \ifhtpartuchar@save
+        \ifhtpartuchar@set
             \edef\langname{\languagename}%
         \fi
     \else
         \edef\langname{\languagename}%
     \fi
-    \selectlanguage{chinese}\htpartlang@savetrue\htpartlang@setfalse%
+    \selectlanguage{chinese}\htpartuchar@savetrue\htpartuchar@setfalse%
 }{%
-    \edef\selectlang{\noexpand\selectlanguage{\langname}}\selectlang\htpartlang@savefalse\htpartlang@settrue%
+    \edef\selectlang{\noexpand\selectlanguage{\langname}}\selectlang\htpartuchar@savefalse\htpartuchar@settrue%
 }
 \setTransitionsForCyrillics{%
-    \ifhtpartlang@save
-        \ifhtpartlang@set
+    \ifhtpartuchar@save
+        \ifhtpartuchar@set
             \edef\langname{\languagename}%
         \fi
     \else
         \edef\langname{\languagename}%
     \fi
-    \selectlanguage{russian}\htpartlang@savetrue\htpartlang@setfalse%
+    \selectlanguage{russian}\htpartuchar@savetrue\htpartuchar@setfalse%
 }{%
-    \edef\selectlang{\noexpand\selectlanguage{\langname}}\selectlang\htpartlang@savefalse\htpartlang@settrue%
+    \edef\selectlang{\noexpand\selectlanguage{\langname}}\selectlang\htpartuchar@savefalse\htpartuchar@settrue%
 }
 \fi
 

@@ -2,13 +2,15 @@
 \usepackage{htplogos}
 
 \title{The Real Numbers and The Integers}
-\author{Imhotep}
-\affil{Imhotep}
+\author{Inverted Pastry}
+\affil{Papyrus}
 \date{\today}
 
 \document
 
 \maketitle
+
+
 
 \begin{abstract}
     This primer delivers a concise overview of real numbers and integers, covering their properties and construction.
@@ -16,7 +18,7 @@
 
 \tableofcontents
 
-\listoftheorems[ignoreall,onlynamed]
+\listoftheorems[onlynamed]
 
 \begin{section}{Introduction}
 
@@ -50,10 +52,10 @@ The theory of real numbers is not essential for understanding the fundamental co
     \end{enumerate}
 \end{axiom}
 
-\begin{remark} 
-    \autoref{item:1}, \autoref{item:2}, and \autoref{item:3} establish that \(\left(\symbb{R},+\right)\) is a \emph{group}\index{group}. The satisfaction of \autoref{item:4} further implies that \(\left(\symbb{R},+\right)\) is an \emph{Abelian group}\index{group!Abelian} or \emph{commutative group}\index{group!commutative|seealso{group, Abelian}}. Analogously, \(\left(\symbb{R}^\times\coloneq\symbb{R}-\set{0},\cdot\right)\) is also an Abelian group.
+\begin{remark}
+    \Cref{item:1,item:2,item:3} establish that \(\left(\symbb{R},+\right)\) is a \emph{group}\index{group}. The satisfaction of \cref{item:4} further implies that \(\left(\symbb{R},+\right)\) is an \emph{Abelian group}\index{group!Abelian} or \emph{commutative group}\index{group!commutative|seealso{group, Abelian}}. Analogously, \(\left(\symbb{R}^\times\coloneq\symbb{R}-\set{0},\cdot\right)\) is also an Abelian group.
 
-    Taking into account the validity of \autoref{item:1}, \autoref{item:2}, \autoref{item:3}, \autoref{item:5}, and \autoref{item:9}, we designate the structure \(\left(\symbb{R},+,\cdot\right)\) as a \emph{ring}\index{ring}. If \autoref{item:4} and \autoref{item:8} also hold true, it is asserted that \(\left(\symbb{R},+,\cdot\right)\) constitutes a \emph{commutative ring}\index{ring!commutative}.
+    Taking into account the validity of \cref{item:1,item:2,item:3,item:5,item:9}, we designate the structure \(\left(\symbb{R},+,\cdot\right)\) as a \emph{ring}\index{ring}. If \cref{item:4,item:8} also hold true, it is asserted that \(\left(\symbb{R},+,\cdot\right)\) constitutes a \emph{commutative ring}\index{ring!commutative}.
 \end{remark}
 
 \begin{remark}
@@ -147,7 +149,7 @@ As a generalization of the field axioms and the order axioms, below we prove sev
         \end{align*}
         If \(a+b=a+c\), applying the above, we have \[b=-a+\left(a+c\right)=\left(-a+a\right)+c=0+c=c.\]
         \item A few minor modifications to the relevant parts of the above proof are sufficient.
-        \item Since \(-a+a=0\), applying \autoref{item:23} with \(-a\) and 0 in place of \(a\) and \(b\) respectively gives the conclusion.\qedhere
+        \item Since \(-a+a=0\), applying \cref{item:23} with \(-a\) and 0 in place of \(a\) and \(b\) respectively gives the conclusion.\qedhere
     \end{enumerate}
 \end{proof}
 
@@ -162,7 +164,7 @@ As a generalization of the field axioms and the order axioms, below we prove sev
 \begin{proof}
     \leavevmode
     \begin{enumerate}
-        \item By the distributive law and the cancellation law, \[a\cdot1+a\cdot0=a\cdot\left(1+0\right)=a\cdot1=a\cdot1+0\] implies \(a\cdot0=0\), similarly \(0\cdot a=0=a\cdot0\). In particular, \autoref{item:6} in \autoref{axiom:1.1} also holds true in \(\symbb{R}\).
+        \item By the distributive law and the cancellation law, \[a\cdot1+a\cdot0=a\cdot\left(1+0\right)=a\cdot1=a\cdot1+0\] implies \(a\cdot0=0\), similarly \(0\cdot a=0=a\cdot0\). In particular, \cref{item:6} in \cref{axiom:1.1} also holds true in \(\symbb{R}\).
         \item We only need to state that for every \(a,b\in\symbb{R}\),
         \begin{gather*}
             \left(a\cdot b\right)\cdot0=0=a\cdot0=a\cdot\left(b\cdot0\right),\\
@@ -193,7 +195,7 @@ As a generalization of the field axioms and the order axioms, below we prove sev
         \end{align*}
         If \(a\cdot b=a\cdot c\), applying the above, we have \[b=a^{-1}\cdot\left(a\cdot c\right)=\left(a^{-1}\cdot a\right)\cdot c=1\cdot c=c.\]
         \item A few minor modifications to the relevant parts of the above proof are sufficient.
-        \item Since \(a^{-1}\cdot a=1\), applying \autoref{item:33} with \(a^{-1}\) and 1 in place of \(a\) and \(b\) respectively gives the conclusion.\qedhere
+        \item Since \(a^{-1}\cdot a=1\), applying \cref{item:33} with \(a^{-1}\) and 1 in place of \(a\) and \(b\) respectively gives the conclusion.\qedhere
     \end{enumerate}
 \end{proof}
 
@@ -210,7 +212,7 @@ As a generalization of the field axioms and the order axioms, below we prove sev
     \leavevmode
     \begin{enumerate}
         \item If, for example, \(a\ne0\), then by the uniqueness of the solution of the equation \(a\cdot b=0\) for \(b\), we find \(b=a^{-1}\cdot0=0\).
-        \item The first equality comes from \[a\cdot b+\left(-a\right)\cdot b=\left(-a+a\right)\cdot b=0\cdot b=0,\] combined with \autoref{proposition:1.2}. The other half is proved in the same way.
+        \item The first equality comes from \[a\cdot b+\left(-a\right)\cdot b=\left(-a+a\right)\cdot b=0\cdot b=0,\] combined with \cref{proposition:1.2}. The other half is proved in the same way.
         \item \(\left(-a\right)\cdot\left(-b\right)=-\left(a\cdot\left(-b\right)\right)=-\left(-\left(a\cdot b\right)\right)=a\cdot b\).\qedhere
     \end{enumerate}
 \end{proof}
