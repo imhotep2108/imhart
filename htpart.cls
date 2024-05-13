@@ -60,8 +60,7 @@
 \RequirePackage{biblatex}
 \fi
 \ifhtpart@idx
-\RequirePackage[%nonewpage
-]{imakeidx}
+\RequirePackage{imakeidx}
 \fi
 
 \ifhtpart@hyper
@@ -70,6 +69,9 @@
 \fi
 
 %%%%%%%%%%%%%%%% Preamble %%%%%%%%%%%%%%%%
+
+\AddToHook{cmd/tableofcontents/after}{\addcontentsline{toc}{section}{\contentsname}}
+\AddToHook{cmd/listoftheorems/after}{\addcontentsline{toc}{section}{\listtheoremname}}
 
 \babelprovide[import,main]{english}
 \babelprovide[import]{chinese}
@@ -259,9 +261,12 @@
 \setlength{\columnseprule}{0.4pt}
 \AddToHook{begindocument/end}{\begin{multicols}{2}}
 \AddToHook{enddocument}{\end{multicols}}
+\fancyhead[EL,OR]{\thepage}
+\fancyfoot{}
 \fi
 
 \pagestyle{fancy}
+\AddToHook{cmd/maketitle/after}{\thispagestyle{fancy}}
 
 %%%%%%%%%%%%%%%% Page and Text %%%%%%%%%%%%%%%%
 
@@ -367,7 +372,7 @@
 \fi
 
 \ifhtpart@idx
-% \indexsetup{noclearpage}
+\indexsetup{noclearpage,firstpagestyle=fancy}
 \makeindex[intoc,columns=\ifhtpart@twocol1\else2\fi]
 \fi
 
@@ -382,9 +387,3 @@
 %%%%%%%%%%%%%%%% hyperref %%%%%%%%%%%%%%%%
 
 \endinput
-
-Known Issues
-
-- Twoside
-- Header
-- Index

@@ -1,1 +1,2 @@
-{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q[onlynamed]\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q[onlynamed,swapnumber]\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\Q[onlynamed,swapnumber]\\E$"}
