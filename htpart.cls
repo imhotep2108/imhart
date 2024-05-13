@@ -2,6 +2,7 @@
 \ProvidesClass{htpart}
 
 \newif\ifhtpart@twoside
+\newif\ifhtpart@uchar
 \newif\ifhtpart@twocol
 \newif\ifhtpart@bib
 \newif\ifhtpart@idx
@@ -14,6 +15,7 @@
 \htpart@hypertrue
 
 \DeclareOption{oneside}{\htpart@twosidefalse}
+\DeclareOption{uchar}{\htpart@uchartrue}
 \DeclareOption{onecol}{\htpart@twocolfalse}
 \DeclareOption{nobib}{\htpart@bibfalse}
 \DeclareOption{noidx}{\htpart@idxfalse}
@@ -24,7 +26,9 @@
 
 \RequirePackage{babel}
 \RequirePackage{csquotes}
+\ifhtpart@uchar
 \RequirePackage[CJK,Cyrillics,Latin]{ucharclasses}
+\fi
 
 \RequirePackage{xcolor}
 \RequirePackage{geometry}
@@ -206,9 +210,12 @@
 \setlocalecaption{spanish}{remark}{Observación}
 \setlocalecaption{spanish}{solution}{Solución}
 
+\ifhtpart@uchar
 \newif\ifhtpartlang@save
 \newif\ifhtpartlang@set
+\fi
 
+\ifhtpart@uchar
 \setTransitionsForCJK{%
     \ifhtpartlang@save
         \ifhtpartlang@set
@@ -233,6 +240,7 @@
 }{%
     \edef\selectlang{\noexpand\selectlanguage{\langname}}\selectlang\htpartlang@savefalse\htpartlang@settrue%
 }
+\fi
 
 %%%%%%%%%%%%%%%% Preamble %%%%%%%%%%%%%%%%
 
