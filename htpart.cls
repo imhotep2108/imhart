@@ -156,6 +156,7 @@
 \setlocalecaption{chinese}{exercise}{练习}
 \setlocalecaption{chinese}{axiom}{公理}
 \setlocalecaption{chinese}{remark}{注释}
+\setlocalecaption{chinese}{summary}{总结}
 \setlocalecaption{chinese}{solution}{解答}
 
 \setlocalecaption{french}{theorem}{Théorème}
@@ -169,6 +170,7 @@
 \setlocalecaption{french}{exercise}{Exercice}
 \setlocalecaption{french}{axiom}{Axiome}
 \setlocalecaption{french}{remark}{Remarque}
+\setlocalecaption{french}{summary}{Résumé}
 \setlocalecaption{french}{solution}{Solution}
 
 \setlocalecaption{german}{theorem}{Satz}
@@ -182,6 +184,7 @@
 \setlocalecaption{german}{exercise}{Übung}
 \setlocalecaption{german}{axiom}{Axiom}
 \setlocalecaption{german}{remark}{Bemerkung}
+\setlocalecaption{german}{summary}{Zusammenfassung}
 \setlocalecaption{german}{solution}{Lösung}
 
 \setlocalecaption{russian}{theorem}{Теорема}
@@ -195,6 +198,7 @@
 \setlocalecaption{russian}{exercise}{Упражнение}
 \setlocalecaption{russian}{axiom}{Аксиома}
 \setlocalecaption{russian}{remark}{Замечание}
+\setlocalecaption{russian}{summary}{Резюме}
 \setlocalecaption{russian}{solution}{Решение}
 
 \setlocalecaption{spanish}{theorem}{Teorema}
@@ -208,6 +212,7 @@
 \setlocalecaption{spanish}{exercise}{Ejercicio}
 \setlocalecaption{spanish}{axiom}{Axioma}
 \setlocalecaption{spanish}{remark}{Observación}
+\setlocalecaption{spanish}{summary}{Resumen}
 \setlocalecaption{spanish}{solution}{Solución}
 
 \ifhtpart@uchar
