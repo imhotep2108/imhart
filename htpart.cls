@@ -24,6 +24,33 @@
 
 \LoadClass[\ifhtpart@twoside twoside\else oneside\fi]{article}
 
+\newcounter{art}
+\newcounter{artnum}
+\newcommand{\artnum}[1]{
+    \setcounter{artnum}{#1}
+}
+
+\newenvironment{article}{
+    \renewcommand\AB@authors{}
+    \renewcommand\AB@affillist{}
+    \renewcommand\AB@authlist{}
+    \emptythanks
+    \addtocounter{art}{1}
+    \setcounter{affil}{0}
+    \setcounter{authors}{0}
+    \setcounter{section}{0}
+    \clearpage
+    \begingroup
+    \ifhtpart@twocol
+    \begin{multicols}{2}
+    \fi
+}{
+    \ifhtpart@twocol
+    \end{multicols}
+    \fi
+    \endgroup
+}
+
 \RequirePackage{babel}
 \RequirePackage{csquotes}
 \ifhtpart@uchar
@@ -34,6 +61,7 @@
 \RequirePackage{geometry}
 \RequirePackage{multicol}
 \RequirePackage{ragged2e}
+\RequirePackage[raggedright]{titlesec}
 \RequirePackage{fancyhdr}
 \RequirePackage{enumitem}
 
@@ -55,9 +83,10 @@
 \RequirePackage{caption}
 \RequirePackage{subcaption}
 
+\RequirePackage{titling}
 \RequirePackage{authblk}
 \ifhtpart@bib
-\RequirePackage{biblatex}
+\RequirePackage[style=alphabetic]{biblatex}
 \fi
 \ifhtpart@idx
 \RequirePackage{imakeidx}
@@ -69,9 +98,6 @@
 \fi
 
 %%%%%%%%%%%%%%%% Preamble %%%%%%%%%%%%%%%%
-
-\AddToHook{cmd/tableofcontents/after}{\addcontentsline{toc}{section}{\contentsname}}
-\AddToHook{cmd/listoftheorems/after}{\addcontentsline{toc}{section}{\listtheoremname}}
 
 \babelprovide[import,main]{english}
 \babelprovide[import]{chinese}
@@ -259,8 +285,7 @@
 
 \ifhtpart@twocol
 \setlength{\columnseprule}{0.4pt}
-\AddToHook{begindocument/end}{\begin{multicols}{2}}
-\AddToHook{enddocument}{\end{multicols}}
+\PassOptionsToPackage{titlesec}{raggedright}
 \fancyhead[EL,OR]{\thepage}
 \fancyfoot{}
 \fi
@@ -352,7 +377,9 @@
 
 \sisetup{parse-numbers=false}
 
-\usetikzlibrary{calc,scopes}
+\usetikzlibrary{calc}
+\usetikzlibrary{scopes}
+\usetikzlibrary{cd}
 
 %%%%%%%%%%%%%%%% Mathematics and Science %%%%%%%%%%%%%%%%
 
@@ -365,15 +392,18 @@
 %%%%%%%%%%%%%%%% Front Matter and Back Matter %%%%%%%%%%%%%%%%
 
 \ifhtpart@bib
-\ExecuteBibliographyOptions{autolang=other}
+\ExecuteBibliographyOptions{autolang=other,defernumbers=true}
 \addbibresource{refs.bib}
+\DeclareBibliographyCategory{1}
+\DeclareBibliographyCategory{2}
 \DeclarePrintbibliographyDefaults{heading=bibintoc}
 \nocite{*}
 \fi
 
 \ifhtpart@idx
 \indexsetup{noclearpage,firstpagestyle=fancy}
-\makeindex[intoc,columns=\ifhtpart@twocol1\else2\fi]
+\makeindex[name=1,intoc,columns=\ifhtpart@twocol1\else2\fi]
+\makeindex[name=2,intoc,columns=\ifhtpart@twocol1\else2\fi]
 \fi
 
 %%%%%%%%%%%%%%%% Front Matter and Back Matter %%%%%%%%%%%%%%%%
@@ -387,3 +417,7 @@
 %%%%%%%%%%%%%%%% hyperref %%%%%%%%%%%%%%%%
 
 \endinput
+
+Known Issues
+
+- A Lot

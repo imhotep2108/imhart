@@ -1,12 +1,14 @@
 \documentclass{htpart}
 \usepackage{htplogos}
 
+\document
+
+\article
+
 \title{The Real Numbers and The Integers}
 \author{Inverted Pastry}
 \affil{Papyrus}
 \date{\today}
-
-\document
 
 \maketitle
 
@@ -15,7 +17,6 @@
 \end{abstract}
 
 \tableofcontents
-
 \listoftheorems[onlynamed,swapnumber]
 
 \begin{section}{Introduction}
@@ -31,29 +32,29 @@ The theory of real numbers is not essential for understanding the fundamental co
 \end{definition}
 
 \begin{axiom}[The Field Axioms]\label{axiom:1.1}
-    \(\left(\symbb{R},+,\cdot\right)\) is a \emph{field}\index{field}, that is to say, let \(\symbb{R}\) be a set,
+    \(\left(\symbb{R},+,\cdot\right)\) is a \emph{field}\index[1]{field}, that is to say, let \(\symbb{R}\) be a set,
     \begin{gather*}
         +\colon\symbb{R}^2\to\symbb{R},\quad\left(x,y\right)\mapsto x+y,\\
         \cdot\colon\symbb{R}^2\to\symbb{R},\quad\left(x,y\right)\mapsto x\cdot y
     \end{gather*}
-    be two mappings, called \emph{addition}\index{addition} and \emph{multiplication}\index{multiplication}, respectively, satisfying the followings.
+    be two mappings, called \emph{addition}\index[1]{addition} and \emph{multiplication}\index[1]{multiplication}, respectively, satisfying the followings.
     \begin{enumerate}
-        \item\label{item:1} For every \(a,b,c\in\symbb{R}\), \(\left(a+b\right)+c=a+\left(b+c\right)\), i.e. addition is \emph{associative}\index{associative law!of addition}.
-        \item\label{item:2} There exists a \(0\in\symbb{R}\), s.t. for every \(a\in\symbb{R}\), \(a+0=0+a=a\), and call 0 the \emph{additive identity}\index{identity!of addition}.
-        \item\label{item:3} For every \(a\in\symbb{R}\), there exists a \(-a\in\symbb{R}\), s.t. \(a+\left(-a\right)=\left(-a\right)+a=0\), and call \(-a\) the \emph{additive inverse}\index{inverse!of addition} or \emph{opposite}\index{opposite|seealso{inverse, of addition}} of \(a\).
-        \item\label{item:4} For every \(a,b\in\symbb{R}\), \(a+b=b+a\), i.e. addition is \emph{commutative}\index{commutative law!of addition}.
-        \item\label{item:5} For every \(a,b,c\in\symbb{R}-\set{0}\), \(\left(a\cdot b\right)\cdot c=a\cdot\left(b\cdot c\right)\), i.e. multiplication is \emph{associative}\index{associative law!of multiplication}.
-        \item\label{item:6} There exists a \(1\in\symbb{R}-\set{0}\), s.t. for every \(a\in\symbb{R}-\set{0}\), \(a\cdot1=1\cdot a=a\), and call 1 the \emph{multiplicative identity}\index{identity!of multiplication}.
-        \item For every \(a\in\symbb{R}-\set{0}\), there exists an \(a^{-1}\in\symbb{R}-\set{0}\), s.t. \(a\cdot a^{-1}=a^{-1}\cdot a=1\), and call \(a^{-1}\) the \emph{multiplicative inverse}\index{inverse!of multiplication} or \emph{reciprocal}\index{reciprocal|seealso{inverse, of multiplication}} of \(a\).
-        \item\label{item:8} For every \(a,b\in\symbb{R}-\set{0}\), \(a\cdot b=b\cdot a\), i.e. multiplication is \emph{commutative}\index{commutative law!of multiplication}.
-        \item\label{item:9} For every \(a,b,c\in\symbb{R}\), \(a\cdot\left(b+c\right)=\left(a\cdot b\right)+\left(a\cdot c\right)\), \(\left(b+c\right)\cdot a=\left(b\cdot a\right)+\left(c\cdot a\right)\), i.e. multiplication is \emph{distributive}\index{distributive law!of multiplication with respect to addition} with respect to addition.
+        \item\label{item:1} For every \(a,b,c\in\symbb{R}\), \(\left(a+b\right)+c=a+\left(b+c\right)\), i.e. addition is \emph{associative}\index[1]{associative law!of addition}.
+        \item\label{item:2} There exists a \(0\in\symbb{R}\), s.t. for every \(a\in\symbb{R}\), \(a+0=0+a=a\), and call 0 the \emph{additive identity}\index[1]{identity!of addition}.
+        \item\label{item:3} For every \(a\in\symbb{R}\), there exists a \(-a\in\symbb{R}\), s.t. \(a+\left(-a\right)=\left(-a\right)+a=0\), and call \(-a\) the \emph{additive inverse}\index[1]{inverse!of addition} or \emph{opposite}\index[1]{opposite|seealso{inverse, of addition}} of \(a\).
+        \item\label{item:4} For every \(a,b\in\symbb{R}\), \(a+b=b+a\), i.e. addition is \emph{commutative}\index[1]{commutative law!of addition}.
+        \item\label{item:5} For every \(a,b,c\in\symbb{R}-\set{0}\), \(\left(a\cdot b\right)\cdot c=a\cdot\left(b\cdot c\right)\), i.e. multiplication is \emph{associative}\index[1]{associative law!of multiplication}.
+        \item\label{item:6} There exists a \(1\in\symbb{R}-\set{0}\), s.t. for every \(a\in\symbb{R}-\set{0}\), \(a\cdot1=1\cdot a=a\), and call 1 the \emph{multiplicative identity}\index[1]{identity!of multiplication}.
+        \item For every \(a\in\symbb{R}-\set{0}\), there exists an \(a^{-1}\in\symbb{R}-\set{0}\), s.t. \(a\cdot a^{-1}=a^{-1}\cdot a=1\), and call \(a^{-1}\) the \emph{multiplicative inverse}\index[1]{inverse!of multiplication} or \emph{reciprocal}\index[1]{reciprocal|seealso{inverse, of multiplication}} of \(a\).
+        \item\label{item:8} For every \(a,b\in\symbb{R}-\set{0}\), \(a\cdot b=b\cdot a\), i.e. multiplication is \emph{commutative}\index[1]{commutative law!of multiplication}.
+        \item\label{item:9} For every \(a,b,c\in\symbb{R}\), \(a\cdot\left(b+c\right)=\left(a\cdot b\right)+\left(a\cdot c\right)\), \(\left(b+c\right)\cdot a=\left(b\cdot a\right)+\left(c\cdot a\right)\), i.e. multiplication is \emph{distributive}\index[1]{distributive law!of multiplication with respect to addition} with respect to addition.
     \end{enumerate}
 \end{axiom}
 
 \begin{remark}
-    \Cref{item:1,item:2,item:3} establish that \(\left(\symbb{R},+\right)\) is a \emph{group}\index{group}. The satisfaction of \cref{item:4} further implies that \(\left(\symbb{R},+\right)\) is an \emph{Abelian group}\index{group!Abelian} or \emph{commutative group}\index{group!commutative|seealso{group, Abelian}}. Analogously, \(\left(\symbb{R}^\times\coloneq\symbb{R}-\set{0},\cdot\right)\) is also an Abelian group.
+    \Cref{item:1,item:2,item:3} establish that \(\left(\symbb{R},+\right)\) is a \emph{group}\index[1]{group}. The satisfaction of \cref{item:4} further implies that \(\left(\symbb{R},+\right)\) is an \emph{Abelian group}\index[1]{group!Abelian} or \emph{commutative group}\index[1]{group!commutative|seealso{group, Abelian}}. Analogously, \(\left(\symbb{R}^\times\coloneq\symbb{R}-\set{0},\cdot\right)\) is also an Abelian group.
 
-    Taking into account the validity of \cref{item:1,item:2,item:3,item:5,item:9}, we designate the structure \(\left(\symbb{R},+,\cdot\right)\) as a \emph{ring}\index{ring}. If \cref{item:4,item:8} also hold true, it is asserted that \(\left(\symbb{R},+,\cdot\right)\) constitutes a \emph{commutative ring}\index{ring!commutative}.
+    Taking into account the validity of \cref{item:1,item:2,item:3,item:5,item:9}, we designate the structure \(\left(\symbb{R},+,\cdot\right)\) as a \emph{ring}\index[1]{ring}. If \cref{item:4,item:8} also hold true, it is asserted that \(\left(\symbb{R},+,\cdot\right)\) constitutes a \emph{commutative ring}\index[1]{ring!commutative}.
 \end{remark}
 
 \begin{remark}
@@ -61,7 +62,7 @@ The theory of real numbers is not essential for understanding the fundamental co
 \end{remark}
 
 \begin{axiom}[The Order Axioms]
-    Further, \(\left(\symbb{R},+,\cdot,\leqslant\right)\) is an ordered field, which means \(\left(\symbb{R},+,\cdot\right)\) is a field with total order \(\leqslant\) satisfying the followings.
+    Further more, \(\left(\symbb{R},+,\cdot,\leqslant\right)\) is an ordered field, which means \(\left(\symbb{R},+,\cdot\right)\) is a field with total order \(\leqslant\) satisfying the followings.
     \begin{enumerate}
         \item For every \(a,b,c\in\symbb{R}\), if \(a\leqslant b\) then \(a+c\leqslant b+c\), i.e. order is compatible with addition.
         \item For every \(a,b\in\symbb{R}\), if \(0\leqslant a\) and \(0\leqslant b\) then \(0\leqslant a\cdot b\), i.e. order is compatible with multiplication.
@@ -235,9 +236,41 @@ From now on, we will no longer pay attention to the algebraic properties of real
 
 \end{section}
 
-\printbibliography
+\addtocategory{1}{ded65,rud76,zor24a,zor24b}
+\printbibliography[category={1}]
+\printindex[1]
 
-\printindex
+\endarticle
+
+\article
+
+\title{Title}
+\author[1]{Author 1}
+\author[2]{Author 2}
+\affil[1]{Affiliation 1}
+\affil[2]{Affiliation 2}
+\date{Date}
+
+\maketitle
+
+\begin{abstract}
+    Abstract.
+\end{abstract}
+
+\tableofcontents
+\listoftheorems[onlynamed,swapnumber]
+
+\begin{section}{Introduction}
+
+\emph{Introduction}\index[2]{Introduction}.
+
+\end{section}
+
+\addtocategory{2}{rud76}
+\printbibliography[category={2}]
+\printindex[2]
+
+\endarticle
 
 \enddocument
 
