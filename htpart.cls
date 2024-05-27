@@ -2,54 +2,54 @@
 \ProvidesClass{htpart}
 
 \newif\ifhtpart@twoside
+\newif\ifhtpart@multi
+\newif\ifhtpart@latin
+\newif\ifhtpart@english
+\newif\ifhtpart@chinese
+\newif\ifhtpart@french
+\newif\ifhtpart@german
+\newif\ifhtpart@russian
+\newif\ifhtpart@spanish
 \newif\ifhtpart@uchar
 \newif\ifhtpart@twocol
+\newif\ifhtpart@hdr
 \newif\ifhtpart@bib
 \newif\ifhtpart@idx
 \newif\ifhtpart@hyper
 
 \htpart@twosidetrue
+\htpart@multitrue
+\htpart@latintrue
+\htpart@englishtrue
 \htpart@twocoltrue
+\htpart@hdrtrue
 \htpart@bibtrue
 \htpart@idxtrue
 \htpart@hypertrue
 
 \DeclareOption{oneside}{\htpart@twosidefalse}
+\DeclareOption{single}{\htpart@multifalse}
+\DeclareOption{chinese}{\htpart@latinfalse\htpart@englishfalse\htpart@chinesetrue}
+\DeclareOption{french}{\htpart@englishfalse\htpart@frenchtrue}
+\DeclareOption{german}{\htpart@englishfalse\htpart@germantrue}
+\DeclareOption{russian}{\htpart@latinfalse\htpart@englishfalse\htpart@russiantrue}
+\DeclareOption{spanish}{\htpart@englishfalse\htpart@spanishtrue}
 \DeclareOption{uchar}{\htpart@uchartrue}
 \DeclareOption{onecol}{\htpart@twocolfalse}
+\DeclareOption{nohdr}{\htpart@hdrfalse}
 \DeclareOption{nobib}{\htpart@bibfalse}
 \DeclareOption{noidx}{\htpart@idxfalse}
 \DeclareOption{nohyper}{\htpart@hyperfalse}
+\DeclareOption{plain}{\htpart@twosidefalse\htpart@multifalse\htpart@twocolfalse\htpart@hdrfalse\htpart@bibfalse\htpart@idxfalse\htpart@hyperfalse}
 \ProcessOptions\relax
 
 \LoadClass[\ifhtpart@twoside twoside\else oneside\fi]{article}
 
+\ifhtpart@multi
 \newcounter{art}
 \newcounter{artnum}
-\newcommand{\artnum}[1]{
-    \setcounter{artnum}{#1}
-}
-
-\newenvironment{article}{
-    \renewcommand\AB@authors{}
-    \renewcommand\AB@affillist{}
-    \renewcommand\AB@authlist{}
-    \emptythanks
-    \addtocounter{art}{1}
-    \setcounter{affil}{0}
-    \setcounter{authors}{0}
-    \setcounter{section}{0}
-    \clearpage
-    \begingroup
-    \ifhtpart@twocol
-    \begin{multicols}{2}
-    \fi
-}{
-    \ifhtpart@twocol
-    \end{multicols}
-    \fi
-    \endgroup
-}
+\newcommand{\artnum}[1]{\setcounter{artnum}{#1}}
+\fi
 
 \RequirePackage{babel}
 \RequirePackage{csquotes}
@@ -62,8 +62,10 @@
 \RequirePackage{multicol}
 \RequirePackage{ragged2e}
 \RequirePackage[raggedright]{titlesec}
+\ifhtpart@hdr
 \RequirePackage{fancyhdr}
 \RequirePackage{enumitem}
+\fi
 
 \RequirePackage{mathtools}
 \RequirePackage{unicode-math}
@@ -99,12 +101,57 @@
 
 %%%%%%%%%%%%%%%% Preamble %%%%%%%%%%%%%%%%
 
+\let\Ch\ch
+\let\ch\relax
+
+\ifhtpart@english
 \babelprovide[import,main]{english}
 \babelprovide[import]{chinese}
 \babelprovide[import]{french}
 \babelprovide[import]{german}
 \babelprovide[import]{russian}
 \babelprovide[import]{spanish}
+\fi
+\ifhtpart@chinese
+\babelprovide[import,main]{chinese}
+\babelprovide[import]{english}
+\babelprovide[import]{french}
+\babelprovide[import]{german}
+\babelprovide[import]{russian}
+\babelprovide[import]{spanish}
+\fi
+\ifhtpart@french
+\babelprovide[import,main]{french}
+\babelprovide[import]{chinese}
+\babelprovide[import]{english}
+\babelprovide[import]{german}
+\babelprovide[import]{russian}
+\babelprovide[import]{spanish}
+\fi
+\ifhtpart@german
+\babelprovide[import,main]{german}
+\babelprovide[import]{chinese}
+\babelprovide[import]{english}
+\babelprovide[import]{french}
+\babelprovide[import]{russian}
+\babelprovide[import]{spanish}
+\fi
+\ifhtpart@russian
+\babelprovide[import,main]{russian}
+\babelprovide[import]{chinese}
+\babelprovide[import]{english}
+\babelprovide[import]{french}
+\babelprovide[import]{german}
+\babelprovide[import]{spanish}
+\fi
+\ifhtpart@spanish
+\babelprovide[import,main]{spanish}
+\babelprovide[import]{chinese}
+\babelprovide[import]{english}
+\babelprovide[import]{french}
+\babelprovide[import]{german}
+\babelprovide[import]{russian}
+\fi
 
 \babelfont{rm}[
     Extension       = .otf,
@@ -128,22 +175,22 @@
     Extension       = .otf,
     BoldFont        = FandolSong-Bold,
     ItalicFont      = FandolKai-Regular,
-    % SmallCapsFont   = *,
-    % BoldItalicFont  = *
+    SmallCapsFont   = FandolSong-Regular,
+    BoldItalicFont  = FandolSong-Bold
 ]{FandolSong-Regular}
 \babelfont[chinese]{sf}[
     Extension       = .otf,
     BoldFont        = FandolHei-Bold,
-    % ItalicFont      = *,
-    % SmallCapsFont   = *,
-    % BoldItalicFont  = *
+    ItalicFont      = FandolHei-Regular,
+    SmallCapsFont   = FandolHei-Regular,
+    BoldItalicFont  = FandolHei-Bold
 ]{FandolHei-Regular}
 \babelfont[chinese]{tt}[
     Extension       = .otf,
-    % BoldFont        = *,
-    % ItalicFont      = *,
-    % SmallCapsFont   = *,
-    % BoldItalicFont  = *
+    BoldFont        = FandolFang-Regular,
+    ItalicFont      = FandolFang-Regular,
+    SmallCapsFont   = FandolFang-Regular,
+    BoldItalicFont  = FandolFang-Regular
 ]{FandolFang-Regular}
 
 \setlocalecaption{english}{theorem}{Theorem}
@@ -244,6 +291,8 @@
 \setlocalecaption{spanish}{summary}{Resumen}
 \setlocalecaption{spanish}{solution}{Solución}
 
+\DeclareQuoteStyle{chinese}{}{}{}{}
+
 \newif\ifhtpartuchar@save
 \newif\ifhtpartuchar@set
 
@@ -272,6 +321,21 @@
 }{%
     \edef\selectlang{\noexpand\selectlanguage{\langname}}\selectlang\htpartuchar@savefalse\htpartuchar@settrue%
 }
+\ifhtpart@latin
+\else
+\providecommand*{\latinlang}{english}
+\setTransitionsForLatin{%
+    \ifhtpartuchar@save
+        \ifhtpartuchar@set
+            \edef\langname{\languagename}%
+        \fi
+    \else
+        \edef\langname{\languagename}%
+    \fi
+    \selectlanguage{\latinlang}\htpartuchar@savetrue\htpartuchar@setfalse%
+}{%
+    \edef\selectlang{\noexpand\selectlanguage{\langname}}\selectlang\htpartuchar@savefalse\htpartuchar@settrue%
+}
 \fi
 
 %%%%%%%%%%%%%%%% Preamble %%%%%%%%%%%%%%%%
@@ -286,12 +350,46 @@
 \ifhtpart@twocol
 \setlength{\columnseprule}{0.4pt}
 \PassOptionsToPackage{titlesec}{raggedright}
+\ifhtpart@hdr
 \fancyhead[EL,OR]{\thepage}
 \fancyfoot{}
 \fi
+\fi
 
+\ifhtpart@multi
+\newenvironment{article}{
+    \renewcommand\AB@authors{}
+    \renewcommand\AB@affillist{}
+    \renewcommand\AB@authlist{}
+    \emptythanks
+    \addtocounter{art}{1}
+    \setcounter{affil}{0}
+    \setcounter{authors}{0}
+    \setcounter{section}{0}
+    \clearpage
+    \begingroup
+    \ifhtpart@twocol
+    \begin{multicols}{2}
+    \fi
+}{
+    \ifhtpart@twocol
+    \end{multicols}
+    \fi
+    \endgroup
+}
+\else
+\ifhtpart@twocol
+\AddToHook{begindocument/end}{\begin{multicols}{2}}
+\AddToHook{enddocument}{\end{multicols}}
+\fi
+\fi
+
+\ifhtpart@hdr
 \pagestyle{fancy}
+\ifhtpart@multi
 \AddToHook{cmd/maketitle/after}{\thispagestyle{fancy}}
+\fi
+\fi
 
 %%%%%%%%%%%%%%%% Page and Text %%%%%%%%%%%%%%%%
 
@@ -303,6 +401,8 @@
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\diam}{diam}
 \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\mspan}{span}
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\tr}{tr}
 
@@ -394,16 +494,23 @@
 \ifhtpart@bib
 \ExecuteBibliographyOptions{autolang=other,defernumbers=true}
 \addbibresource{refs.bib}
+\DeclarePrintbibliographyDefaults{heading=bibintoc}
+\ifhtpart@multi
 \DeclareBibliographyCategory{1}
 \DeclareBibliographyCategory{2}
-\DeclarePrintbibliographyDefaults{heading=bibintoc}
+\fi
 \nocite{*}
+\DeclareLanguageMapping{chinese}{english}
 \fi
 
 \ifhtpart@idx
 \indexsetup{noclearpage,firstpagestyle=fancy}
+\ifhtpart@multi
 \makeindex[name=1,intoc,columns=\ifhtpart@twocol1\else2\fi]
 \makeindex[name=2,intoc,columns=\ifhtpart@twocol1\else2\fi]
+\else
+\makeindex[intoc,columns=\ifhtpart@twocol1\else2\fi]
+\fi
 \fi
 
 %%%%%%%%%%%%%%%% Front Matter and Back Matter %%%%%%%%%%%%%%%%
@@ -420,4 +527,9 @@
 
 Known Issues
 
-- A Lot
+- Russian and Chemmacros
+- Chinese Quotes
+- Multiple Articles
+    > Bibliographies and Indices
+    > Affiliation Spacings
+    > Counters

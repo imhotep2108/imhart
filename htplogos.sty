@@ -1,11 +1,27 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{htplogos}
 
+\newif\ifhtplogos@setlogo
+
+\DeclareOption{setlogo}{\htplogos@setlogotrue}
+\ProcessOptions\relax
+
 \RequirePackage{xcolor}
 
 \definecolor{prussian}{HTML}{003153}
 \definecolor{marrs}{HTML}{008c8c}
 
 \DeclareRobustCommand{\HTPart}{\textsf{\textit{\textcolor{prussian}{HTP}}}\texttt{\textsc{\textcolor{marrs}{art}}}}
+
+\NewDocumentCommand{\setlogo}{O{\Huge\HTPart}}{
+    \AddToHook{shipout/foreground}{
+        \tikz[remember picture,overlay]{
+            \node at (current page.north \if@twoside\ifodd\thepage east\else west\fi\else east\fi) [below \if@twoside\ifodd\thepage left\else right\fi\else left\fi] {#1}
+        }
+    }
+}
+\ifhtplogos@setlogo
+\setlogo
+\fi
 
 \endinput
