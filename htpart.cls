@@ -337,6 +337,7 @@
     \edef\selectlang{\noexpand\selectlanguage{\langname}}\selectlang\htpartuchar@savefalse\htpartuchar@settrue%
 }
 \fi
+\fi
 
 %%%%%%%%%%%%%%%% Preamble %%%%%%%%%%%%%%%%
 
