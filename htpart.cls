@@ -4,12 +4,12 @@
 \newif\ifhtpart@twoside
 \newif\ifhtpart@multi
 \newif\ifhtpart@latin
-\newif\ifhtpart@english
-\newif\ifhtpart@chinese
-\newif\ifhtpart@french
-\newif\ifhtpart@german
-\newif\ifhtpart@russian
-\newif\ifhtpart@spanish
+\newif\ifhtpart@en
+\newif\ifhtpart@zh
+\newif\ifhtpart@fr
+\newif\ifhtpart@de
+\newif\ifhtpart@ru
+\newif\ifhtpart@es
 \newif\ifhtpart@uchar
 \newif\ifhtpart@twocol
 \newif\ifhtpart@hdr
@@ -20,7 +20,7 @@
 \htpart@twosidetrue
 \htpart@multitrue
 \htpart@latintrue
-\htpart@englishtrue
+\htpart@entrue
 \htpart@twocoltrue
 \htpart@hdrtrue
 \htpart@bibtrue
@@ -29,11 +29,11 @@
 
 \DeclareOption{oneside}{\htpart@twosidefalse}
 \DeclareOption{single}{\htpart@multifalse}
-\DeclareOption{chinese}{\htpart@latinfalse\htpart@englishfalse\htpart@chinesetrue}
-\DeclareOption{french}{\htpart@englishfalse\htpart@frenchtrue}
-\DeclareOption{german}{\htpart@englishfalse\htpart@germantrue}
-\DeclareOption{russian}{\htpart@latinfalse\htpart@englishfalse\htpart@russiantrue}
-\DeclareOption{spanish}{\htpart@englishfalse\htpart@spanishtrue}
+\DeclareOption{zh}{\htpart@latinfalse\htpart@enfalse\htpart@zhtrue}
+\DeclareOption{fr}{\htpart@enfalse\htpart@frtrue}
+\DeclareOption{de}{\htpart@enfalse\htpart@detrue}
+\DeclareOption{ru}{\htpart@latinfalse\htpart@enfalse\htpart@rutrue}
+\DeclareOption{es}{\htpart@enfalse\htpart@estrue}
 \DeclareOption{uchar}{\htpart@uchartrue}
 \DeclareOption{onecol}{\htpart@twocolfalse}
 \DeclareOption{nohdr}{\htpart@hdrfalse}
@@ -101,10 +101,7 @@
 
 %%%%%%%%%%%%%%%% Preamble %%%%%%%%%%%%%%%%
 
-\let\Ch\ch
-\let\ch\relax
-
-\ifhtpart@english
+\ifhtpart@en
 \babelprovide[import,main]{english}
 \babelprovide[import]{chinese}
 \babelprovide[import]{french}
@@ -112,7 +109,7 @@
 \babelprovide[import]{russian}
 \babelprovide[import]{spanish}
 \fi
-\ifhtpart@chinese
+\ifhtpart@zh
 \babelprovide[import,main]{chinese}
 \babelprovide[import]{english}
 \babelprovide[import]{french}
@@ -120,7 +117,7 @@
 \babelprovide[import]{russian}
 \babelprovide[import]{spanish}
 \fi
-\ifhtpart@french
+\ifhtpart@fr
 \babelprovide[import,main]{french}
 \babelprovide[import]{chinese}
 \babelprovide[import]{english}
@@ -128,7 +125,7 @@
 \babelprovide[import]{russian}
 \babelprovide[import]{spanish}
 \fi
-\ifhtpart@german
+\ifhtpart@de
 \babelprovide[import,main]{german}
 \babelprovide[import]{chinese}
 \babelprovide[import]{english}
@@ -136,7 +133,7 @@
 \babelprovide[import]{russian}
 \babelprovide[import]{spanish}
 \fi
-\ifhtpart@russian
+\ifhtpart@ru
 \babelprovide[import,main]{russian}
 \babelprovide[import]{chinese}
 \babelprovide[import]{english}
@@ -144,7 +141,7 @@
 \babelprovide[import]{german}
 \babelprovide[import]{spanish}
 \fi
-\ifhtpart@spanish
+\ifhtpart@es
 \babelprovide[import,main]{spanish}
 \babelprovide[import]{chinese}
 \babelprovide[import]{english}
@@ -290,8 +287,6 @@
 \setlocalecaption{spanish}{remark}{Observación}
 \setlocalecaption{spanish}{summary}{Resumen}
 \setlocalecaption{spanish}{solution}{Solución}
-
-\DeclareQuoteStyle{chinese}{}{}{}{}
 
 \newif\ifhtpartuchar@save
 \newif\ifhtpartuchar@set
@@ -501,7 +496,6 @@
 \DeclareBibliographyCategory{2}
 \fi
 \nocite{*}
-\DeclareLanguageMapping{chinese}{english}
 \fi
 
 \ifhtpart@idx
@@ -528,8 +522,6 @@
 
 Known Issues
 
-- Russian and Chemmacros
-- Chinese Quotes
 - Multiple Articles
     > Bibliographies and Indices
     > Affiliation Spacings
