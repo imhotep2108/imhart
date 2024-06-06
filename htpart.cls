@@ -41,6 +41,13 @@
 \DeclareOption{noidx}{\htpart@idxfalse}
 \DeclareOption{nohyper}{\htpart@hyperfalse}
 \DeclareOption{plain}{\htpart@twosidefalse\htpart@multifalse\htpart@twocolfalse\htpart@hdrfalse\htpart@bibfalse\htpart@idxfalse\htpart@hyperfalse}
+\DeclareOption{twoside}{\htpart@twosidetrue}
+\DeclareOption{multi}{\htpart@multitrue}
+\DeclareOption{twocol}{\htpart@twocoltrue}
+\DeclareOption{hdr}{\htpart@hdrtrue}
+\DeclareOption{bib}{\htpart@bibtrue}
+\DeclareOption{idx}{\htpart@idxtrue}
+\DeclareOption{hyper}{\htpart@hypertrue}
 \ProcessOptions\relax
 
 \LoadClass[\ifhtpart@twoside twoside\else oneside\fi]{article}
@@ -399,6 +406,7 @@
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\mspan}{span}
+\DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\tr}{tr}
 
@@ -473,9 +481,13 @@
 
 \sisetup{parse-numbers=false}
 
-\usetikzlibrary{calc}
 \usetikzlibrary{scopes}
+\usetikzlibrary{calc}
+\usetikzlibrary{intersections}
+\usetikzlibrary{3d}
 \usetikzlibrary{cd}
+
+\tikzset{every picture/.style={line cap=round,line join=round,smooth}}
 
 %%%%%%%%%%%%%%%% Mathematics and Science %%%%%%%%%%%%%%%%
 
