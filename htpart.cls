@@ -1,78 +1,49 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{htpart}
 
-\newif\ifhtpart@twoside
-\newif\ifhtpart@multi
-\newif\ifhtpart@latin
 \newif\ifhtpart@en
 \newif\ifhtpart@zh
 \newif\ifhtpart@fr
 \newif\ifhtpart@de
 \newif\ifhtpart@ru
 \newif\ifhtpart@es
-\newif\ifhtpart@uchar
+\newif\ifhtpart@notosans
+\newif\ifhtpart@twosid
 \newif\ifhtpart@twocol
 \newif\ifhtpart@hdr
 \newif\ifhtpart@bib
 \newif\ifhtpart@idx
-\newif\ifhtpart@hyper
+\newif\ifhtpart@hyp
 
-\htpart@twosidetrue
-\htpart@multitrue
-\htpart@latintrue
 \htpart@entrue
-\htpart@twocoltrue
-\htpart@hdrtrue
-\htpart@bibtrue
-\htpart@idxtrue
-\htpart@hypertrue
 
-\DeclareOption{oneside}{\htpart@twosidefalse}
-\DeclareOption{single}{\htpart@multifalse}
-\DeclareOption{zh}{\htpart@latinfalse\htpart@enfalse\htpart@zhtrue}
+\DeclareOption{zh}{\htpart@enfalse\htpart@zhtrue}
 \DeclareOption{fr}{\htpart@enfalse\htpart@frtrue}
 \DeclareOption{de}{\htpart@enfalse\htpart@detrue}
-\DeclareOption{ru}{\htpart@latinfalse\htpart@enfalse\htpart@rutrue}
+\DeclareOption{ru}{\htpart@enfalse\htpart@rutrue}
 \DeclareOption{es}{\htpart@enfalse\htpart@estrue}
-\DeclareOption{uchar}{\htpart@uchartrue}
-\DeclareOption{onecol}{\htpart@twocolfalse}
-\DeclareOption{nohdr}{\htpart@hdrfalse}
-\DeclareOption{nobib}{\htpart@bibfalse}
-\DeclareOption{noidx}{\htpart@idxfalse}
-\DeclareOption{nohyper}{\htpart@hyperfalse}
-\DeclareOption{plain}{\htpart@twosidefalse\htpart@multifalse\htpart@twocolfalse\htpart@hdrfalse\htpart@bibfalse\htpart@idxfalse\htpart@hyperfalse}
-\DeclareOption{twoside}{\htpart@twosidetrue}
-\DeclareOption{multi}{\htpart@multitrue}
+\DeclareOption{notosans}{\htpart@notosanstrue}
+\DeclareOption{basic}{\htpart@twosidtrue\htpart@hdrtrue\htpart@hyptrue}
+\DeclareOption{exten}{\htpart@twosidtrue\htpart@twocoltrue\htpart@hdrtrue\htpart@bibtrue\htpart@idxtrue\htpart@hyptrue}
+\DeclareOption{twosid}{\htpart@twosidtrue}
 \DeclareOption{twocol}{\htpart@twocoltrue}
 \DeclareOption{hdr}{\htpart@hdrtrue}
 \DeclareOption{bib}{\htpart@bibtrue}
 \DeclareOption{idx}{\htpart@idxtrue}
-\DeclareOption{hyper}{\htpart@hypertrue}
+\DeclareOption{hyp}{\htpart@hyptrue}
+\ExecuteOptions{basic}
 \ProcessOptions\relax
 
-\LoadClass[\ifhtpart@twoside twoside\else oneside\fi]{article}
-
-\ifhtpart@multi
-\newcounter{art}
-\newcounter{artnum}
-\newcommand{\artnum}[1]{\setcounter{artnum}{#1}}
-\fi
+\LoadClass[\ifhtpart@twosid twoside\else oneside\fi]{article}
 
 \RequirePackage{babel}
 \RequirePackage{csquotes}
-\ifhtpart@uchar
-\RequirePackage[CJK,Cyrillics,Latin]{ucharclasses}
-\fi
+\RequirePackage{xeCJK}
 
-\RequirePackage{xcolor}
 \RequirePackage{geometry}
 \RequirePackage{multicol}
-\RequirePackage{ragged2e}
-\RequirePackage[raggedright]{titlesec}
-\ifhtpart@hdr
 \RequirePackage{fancyhdr}
 \RequirePackage{enumitem}
-\fi
 
 \RequirePackage{mathtools}
 \RequirePackage{unicode-math}
@@ -92,19 +63,20 @@
 \RequirePackage{caption}
 \RequirePackage{subcaption}
 
-\RequirePackage{titling}
 \RequirePackage{authblk}
+\RequirePackage{titling}
 \ifhtpart@bib
-\RequirePackage[style=alphabetic]{biblatex}
+\RequirePackage{biblatex}
 \fi
 \ifhtpart@idx
 \RequirePackage{imakeidx}
 \fi
 
-\ifhtpart@hyper
+\ifhtpart@hyp
 \RequirePackage{hyperref}
-\RequirePackage{cleveref}
+\RequirePackage{bookmark}
 \fi
+\RequirePackage{cleveref}
 
 %%%%%%%%%%%%%%%% Preamble %%%%%%%%%%%%%%%%
 
@@ -157,45 +129,42 @@
 \babelprovide[import]{russian}
 \fi
 
+\defaultfontfeatures{Extension=.otf}
+\ifhtpart@notosans
+\defaultfontfeatures{Path=fonts/}
 \babelfont{rm}[
-    Extension       = .otf,
+    BoldFont        = NotoSans-Bold,
+    ItalicFont      = NotoSans-Italic,
+    BoldItalicFont  = NotoSans-BoldItalic
+]{NotoSans-Regular}
+\babelfont{sf}[
+    BoldFont        = NotoSans-Bold,
+    ItalicFont      = NotoSans-Italic,
+    BoldItalicFont  = NotoSans-BoldItalic
+]{NotoSans-Regular}
+\babelfont{tt}[
+    Extension       = .ttf,
+    BoldFont        = NotoSansMono-Bold,
+    ItalicFont      = NotoSansMono-Regular,
+    BoldItalicFont  = NotoSansMono-Bold
+]{NotoSansMono-Regular}
+\else
+\babelfont{rm}[
     BoldFont        = NewCM10-Bold,
     ItalicFont      = NewCM10-BookItalic,
     BoldItalicFont  = NewCM10-BoldItalic
 ]{NewCM10-Book}
 \babelfont{sf}[
-    Extension       = .otf,
     BoldFont        = NewCMSans10-Bold,
     ItalicFont      = NewCMSans10-BookOblique,
     BoldItalicFont  = NewCMSans10-BoldOblique
 ]{NewCMSans10-Book}
 \babelfont{tt}[
-    Extension       = .otf,
     BoldFont        = NewCMMono10-Bold,
     ItalicFont      = NewCMMono10-BookItalic,
     BoldItalicFont  = NewCMMono10-BoldOblique
 ]{NewCMMono10-Book}
-\babelfont[chinese]{rm}[
-    Extension       = .otf,
-    BoldFont        = FandolSong-Bold,
-    ItalicFont      = FandolKai-Regular,
-    SmallCapsFont   = FandolSong-Regular,
-    BoldItalicFont  = FandolSong-Bold
-]{FandolSong-Regular}
-\babelfont[chinese]{sf}[
-    Extension       = .otf,
-    BoldFont        = FandolHei-Bold,
-    ItalicFont      = FandolHei-Regular,
-    SmallCapsFont   = FandolHei-Regular,
-    BoldItalicFont  = FandolHei-Bold
-]{FandolHei-Regular}
-\babelfont[chinese]{tt}[
-    Extension       = .otf,
-    BoldFont        = FandolFang-Regular,
-    ItalicFont      = FandolFang-Regular,
-    SmallCapsFont   = FandolFang-Regular,
-    BoldItalicFont  = FandolFang-Regular
-]{FandolFang-Regular}
+\fi
 
 \setlocalecaption{english}{theorem}{Theorem}
 \setlocalecaption{english}{lemma}{Lemma}
@@ -295,50 +264,48 @@
 \setlocalecaption{spanish}{summary}{Resumen}
 \setlocalecaption{spanish}{solution}{Solución}
 
-\newif\ifhtpartuchar@save
-\newif\ifhtpartuchar@set
+\DeclareQuoteStyle{chinese}{\textquotedblleft}{\textquotedblright}{\textquoteleft}{\textquoteright}
 
-\ifhtpart@uchar
-\setTransitionsForCJK{%
-    \ifhtpartuchar@save
-        \ifhtpartuchar@set
-            \edef\langname{\languagename}%
-        \fi
-    \else
-        \edef\langname{\languagename}%
-    \fi
-    \selectlanguage{chinese}\htpartuchar@savetrue\htpartuchar@setfalse%
-}{%
-    \edef\selectlang{\noexpand\selectlanguage{\langname}}\selectlang\htpartuchar@savefalse\htpartuchar@settrue%
-}
-\setTransitionsForCyrillics{%
-    \ifhtpartuchar@save
-        \ifhtpartuchar@set
-            \edef\langname{\languagename}%
-        \fi
-    \else
-        \edef\langname{\languagename}%
-    \fi
-    \selectlanguage{russian}\htpartuchar@savetrue\htpartuchar@setfalse%
-}{%
-    \edef\selectlang{\noexpand\selectlanguage{\langname}}\selectlang\htpartuchar@savefalse\htpartuchar@settrue%
-}
-\ifhtpart@latin
+\xeCJKsetup{LoadFandol=false}
+
+\ifhtpart@notosans
+\setCJKmainfont[
+    BoldFont        = NotoSansCJKsc-Bold,
+    ItalicFont      = NotoSansCJKsc-Regular,
+    SmallCapsFont   = NotoSansCJKsc-Regular,
+    BoldItalicFont  = NotoSansCJKsc-Bold
+]{NotoSansCJKsc-Regular}
+\setCJKsansfont[
+    BoldFont        = NotoSansCJKsc-Bold,
+    ItalicFont      = NotoSansCJKsc-Regular,
+    SmallCapsFont   = NotoSansCJKsc-Regular,
+    BoldItalicFont  = NotoSansCJKsc-Bold
+]{NotoSansCJKsc-Regular}
+\setCJKmonofont[
+    BoldFont        = NotoSansMonoCJKsc-Bold,
+    ItalicFont      = NotoSansMonoCJKsc-Regular,
+    SmallCapsFont   = NotoSansMonoCJKsc-Regular,
+    BoldItalicFont  = NotoSansMonoCJKsc-Bold
+]{NotoSansMonoCJKsc-Regular}
 \else
-\providecommand*{\latinlang}{english}
-\setTransitionsForLatin{%
-    \ifhtpartuchar@save
-        \ifhtpartuchar@set
-            \edef\langname{\languagename}%
-        \fi
-    \else
-        \edef\langname{\languagename}%
-    \fi
-    \selectlanguage{\latinlang}\htpartuchar@savetrue\htpartuchar@setfalse%
-}{%
-    \edef\selectlang{\noexpand\selectlanguage{\langname}}\selectlang\htpartuchar@savefalse\htpartuchar@settrue%
-}
-\fi
+\setCJKmainfont[
+    BoldFont        = FandolSong-Bold,
+    ItalicFont      = FandolKai-Regular,
+    SmallCapsFont   = FandolSong-Regular,
+    BoldItalicFont  = FandolSong-Bold
+]{FandolSong-Regular}
+\setCJKsansfont[
+    BoldFont        = FandolHei-Bold,
+    ItalicFont      = FandolHei-Regular,
+    SmallCapsFont   = FandolHei-Regular,
+    BoldItalicFont  = FandolHei-Bold
+]{FandolHei-Regular}
+\setCJKmonofont[
+    BoldFont        = FandolFang-Regular,
+    ItalicFont      = FandolFang-Regular,
+    SmallCapsFont   = FandolFang-Regular,
+    BoldItalicFont  = FandolFang-Regular
+]{FandolFang-Regular}
 \fi
 
 %%%%%%%%%%%%%%%% Preamble %%%%%%%%%%%%%%%%
@@ -350,48 +317,25 @@
 \geometry{margin=1in}
 \fi
 
-\ifhtpart@twocol
 \setlength{\columnseprule}{0.4pt}
-\PassOptionsToPackage{titlesec}{raggedright}
-\ifhtpart@hdr
-\fancyhead[EL,OR]{\thepage}
-\fancyfoot{}
-\fi
-\fi
 
-\ifhtpart@multi
-\newenvironment{article}{
-    \renewcommand\AB@authors{}
-    \renewcommand\AB@affillist{}
-    \renewcommand\AB@authlist{}
-    \emptythanks
-    \addtocounter{art}{1}
-    \setcounter{affil}{0}
-    \setcounter{authors}{0}
-    \setcounter{section}{0}
-    \clearpage
-    \begingroup
-    \ifhtpart@twocol
-    \begin{multicols}{2}
-    \fi
-}{
-    \ifhtpart@twocol
-    \end{multicols}
-    \fi
-    \endgroup
-}
-\else
 \ifhtpart@twocol
 \AddToHook{begindocument/end}{\begin{multicols}{2}}
 \AddToHook{enddocument}{\end{multicols}}
 \fi
-\fi
 
 \ifhtpart@hdr
-\pagestyle{fancy}
-\ifhtpart@multi
-\AddToHook{cmd/maketitle/after}{\thispagestyle{fancy}}
-\fi
+\AddToHook{begindocument}{
+    \pagestyle{fancy}
+    \ifhtpart@twosid
+    \fancyfoot[OR,EL]{\thepage}
+    \fancyfoot[OC]{\ifdefined\thetitle\thetitle\fi}
+    \fancyfoot[EC]{Imhotep}
+    \else
+    \fancyfoot[R]{\thepage}
+    \fancyfoot[C]{\ifdefined\thetitle\thetitle\fi}
+    \fi
+}
 \fi
 
 %%%%%%%%%%%%%%%% Page and Text %%%%%%%%%%%%%%%%
@@ -409,6 +353,7 @@
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\tr}{tr}
+% need to complete %
 
 \DeclarePairedDelimiterX{\oldabs}[1]{\lvert}{\rvert}{\ifblank{#1}{\,\cdot\,}{#1}}
 \NewDocumentCommand{\abs}{sO{}}{\IfBooleanTF{#1}{\oldabs{#2}}{\oldabs*{#2}}}
@@ -420,6 +365,7 @@
 \NewDocumentCommand{\norm}{sO{}}{\IfBooleanTF{#1}{\oldnorm{#2}}{\oldnorm*{#2}}}
 \DeclarePairedDelimiterX{\oldset}[2]{\lbrace}{\rbrace}{\ifblank{#2}{#1}{\,#1:#2\,}}
 \NewDocumentCommand{\set}{smO{}}{\IfBooleanTF{#1}{\oldset{#2}{#3}}{\oldset*{#2}{#3}}}
+% need to complete % % bra & ket %
 
 \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
     \hskip -\arraycolsep
@@ -429,14 +375,20 @@
 
 \unimathsetup{warnings-off={mathtools-colon,mathtools-overbracket},partial=upright}
 
-\setmathfont[StylisticSet=2]{NewCMMath-Book.otf}
-\setmathfont[range={scr,bfscr},StylisticSet=1]{NewCMMath-Book.otf}
-\setmathfont[range=bb,StylisticSet=3]{NewCMMath-Book.otf}
+\ifhtpart@notosans
+\setmathfont[StylisticSet=2]{NotoSansMath-Regular}
+\setmathfont[range={cal,bfcal},StylisticSet=1]{NotoSansMath-Regular}
+\else
+\setmathfont[StylisticSet=2]{NewCMMath-Book}
+\setmathfont[range={scr,bfscr},StylisticSet=1]{NewCMMath-Book}
+\setmathfont[range=bb,StylisticSet=3]{NewCMMath-Book}
+\fi
 
 \providecommand*{\eu}{\ensuremath{\symup{e}}}
 \providecommand*{\iu}{\ensuremath{\symup{i}}}
 \providecommand*{\gammau}{\ensuremath{\symup{\gamma}}}
 \providecommand*{\piu}{\ensuremath{\symup{\pi}}}
+% need to complete %
 
 \theoremstyle{plain}
 \newtheorem{theorem}{\theoremname}
@@ -481,9 +433,7 @@
 
 \sisetup{parse-numbers=false}
 
-\usetikzlibrary{scopes}
-\usetikzlibrary{calc}
-\usetikzlibrary{intersections}
+\usetikzlibrary{scopes,calc,intersections}
 \usetikzlibrary{3d}
 \usetikzlibrary{cd}
 
@@ -500,41 +450,26 @@
 %%%%%%%%%%%%%%%% Front Matter and Back Matter %%%%%%%%%%%%%%%%
 
 \ifhtpart@bib
-\ExecuteBibliographyOptions{autolang=other,defernumbers=true}
+\ExecuteBibliographyOptions{autolang=other}
 \addbibresource{refs.bib}
 \DeclarePrintbibliographyDefaults{heading=bibintoc}
-\ifhtpart@multi
-\DeclareBibliographyCategory{1}
-\DeclareBibliographyCategory{2}
-\fi
 \nocite{*}
 \fi
 
 \ifhtpart@idx
-\indexsetup{noclearpage,firstpagestyle=fancy}
-\ifhtpart@multi
-\makeindex[name=1,intoc,columns=\ifhtpart@twocol1\else2\fi]
-\makeindex[name=2,intoc,columns=\ifhtpart@twocol1\else2\fi]
-\else
+\indexsetup{noclearpage,firstpagestyle=\ifhtpart@hdr fancy\else plain\fi}
 \makeindex[intoc,columns=\ifhtpart@twocol1\else2\fi]
-\fi
 \fi
 
 %%%%%%%%%%%%%%%% Front Matter and Back Matter %%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%% hyperref %%%%%%%%%%%%%%%%
 
-\ifhtpart@hyper
+\ifhtpart@hyp
 \hypersetup{colorlinks}
+\bookmarksetup{numbered}
 \fi
 
 %%%%%%%%%%%%%%%% hyperref %%%%%%%%%%%%%%%%
 
 \endinput
-
-Known Issues
-
-- Multiple Articles
-    > Bibliographies and Indices
-    > Affiliation Spacings
-    > Counters

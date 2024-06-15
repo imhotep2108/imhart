@@ -1,0 +1,126 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{fancyhtp}
+
+\newif\iffancyhtp@decor
+
+\DeclareOption{decor}{\fancyhtp@decortrue}
+\ExecuteOptions{decor}
+\ProcessOptions\relax
+
+\RequirePackage{xcolor}
+
+\definecolor{navy}{HTML}{003153}
+\definecolor{teal}{HTML}{008c8c}
+\definecolor{blue}{HTML}{002fa7}
+
+\let\oldfootnoterule\footnoterule
+\renewcommand{\footnoterule}{{\color{navy}\oldfootnoterule}}
+
+\long\def\@makefntext{%
+    \cref@constructprefix{footnote}{\cref@result}
+    \protected@edef\cref@currentlabel{%
+        [footnote][\arabic{footnote}][\cref@result]\p@footnote\@thefnmark
+    }%
+    \begingroup\color{teal}\cref@old@makefntext\endgroup}
+
+\renewcommand{\columnseprulecolor}{\color{navy}}
+
+\let\oldheadrule\headrule
+\renewcommand{\headrule}{{\color{navy}\oldheadrule}}
+\let\oldfootrule\footrule
+\renewcommand{\footrule}{{\color{navy}\oldfootrule}}
+
+\ifhtpart@hdr
+\AddToHook{begindocument}{
+    \ifhtpart@twosid
+    \fancyfoot[OR,EL]{\color{teal}\thepage}
+    \else
+    \fancyfoot[R]{\color{teal}\thepage}
+    \fi
+}
+\fi
+
+\setlist{font=\color{teal}}
+
+\AddToHook{cmd/make@display@tag/before}{\color{teal}}
+
+\newtheoremstyle{plain}
+    {\topsep}
+    {\topsep}
+    {\itshape}
+    {}
+    {\bfseries\color{teal}}
+    {.}
+    {5pt plus 1pt minus 1pt}
+    {}
+\newtheoremstyle{definition}
+    {\topsep}
+    {\topsep}
+    {\normalfont}
+    {}
+    {\bfseries\color{teal}}
+    {.}
+    {5pt plus 1pt minus 1pt}
+    {}
+\newtheoremstyle{remark}
+    {\topsep}
+    {\topsep}
+    {\normalfont}
+    {}
+    {\itshape\color{teal}}
+    {.}
+    {5pt plus 1pt minus 1pt}
+    {}
+
+\captionsetup{labelfont={color=teal}}
+
+\ifhtpart@bib
+\DeclareFieldFormat{labelnumberwidth}{\color{teal}\mkbibbrackets{#1}}
+\DeclareFieldFormat{labelalphawidth}{\color{teal}\mkbibbrackets{#1}}
+\fi
+
+\newcommand\pagedecor{
+    \begin{tikzpicture}[remember picture,overlay,navy,shorten <= -10pt,shorten >= -10pt]
+        \newcommand\pdangle{45}
+        \coordinate (auxa) at ([yshift=-0.04\paperheight]current page.north east);
+        \coordinate (auxb) at ([yshift=-0.50\paperheight]current page.north east);
+        \coordinate (auxc) at ([yshift=-0.20\paperheight]current page.north east);
+        \if@twoside\ifodd\thepage
+        \renewcommand\pdangle{45}
+        \coordinate (auxa) at ([yshift=-0.04\paperheight]current page.north east);
+        \coordinate (auxb) at ([yshift=-0.50\paperheight]current page.north east);
+        \coordinate (auxc) at ([yshift=-0.20\paperheight]current page.north east);
+        \else
+        \renewcommand\pdangle{135}
+        \coordinate (auxa) at ([yshift=-0.04\paperheight]current page.north west);
+        \coordinate (auxb) at ([yshift=-0.50\paperheight]current page.north west);
+        \coordinate (auxc) at ([yshift=-0.20\paperheight]current page.north west);
+        \fi\fi
+        \begin{scope}[opacity=0.4,line width=10pt,rounded corners=10pt]
+            \draw (auxa) -- coordinate(a) ++(180+\pdangle:{0.12*sqrt(2)*\paperheight}) -- ++(-\pdangle:{0.12*sqrt(2)*\paperheight}) coordinate(b);
+            \draw (auxa) -- (a) -- ++(180-\pdangle:{0.10*sqrt(2)*\paperheight});
+            \draw (b) -- ++(180+\pdangle:{0.04*sqrt(2)*\paperheight}) -- ++(-\pdangle:{0.04*sqrt(2)*\paperheight});
+        \end{scope}
+        \begin{scope}[opacity=0.6,line width=6pt,rounded corners=6pt]
+            \draw (auxb) -- coordinate(c) ++(180+\pdangle:{0.08*sqrt(2)*\paperheight}) -- ++(-\pdangle:{0.08*sqrt(2)*\paperheight});
+            \draw (auxb) -- (c) -- ++(180-\pdangle:{0.06*sqrt(2)*\paperheight}) -- ++(\pdangle:{0.06*sqrt(2)*\paperheight}) -- ++(-\pdangle:{0.04*sqrt(2)*\paperheight}) coordinate(d);
+            \draw (d) -- ++(180-\pdangle:{0.02*sqrt(2)*\paperheight}) -- ++(\pdangle:{0.02*sqrt(2)*\paperheight});
+        \end{scope}
+        \begin{scope}[opacity=0.8,line width=8pt,rounded corners=8pt]
+            \draw (auxc) -- ++(180+\pdangle:{0.02*sqrt(2)*\paperheight}) -- ++(-\pdangle:{0.02*sqrt(2)*\paperheight});
+        \end{scope}
+    \end{tikzpicture}
+}
+
+\iffancyhtp@decor
+\AddToHook{shipout/background}[pagedecor]{\pagedecor}
+\fi
+\DeclareHookRule{shipout/background}{pgfrcs}{after}{pagedecor}
+
+\DeclareTextFontCommand{\blue}{\color{blue}}
+
+\endinput
+
+Known Issues
+
+ - Page numbering color is not changed without pagestyle fancy.

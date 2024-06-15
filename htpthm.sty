@@ -2,9 +2,19 @@
 \ProvidesPackage{htpthm}
 
 \newif\ifhtpthm@thmonly
+\newif\ifhtpthm@thmbkm
 
 \DeclareOption{thmonly}{\htpthm@thmonlytrue}
+\DeclareOption{thmbkm}{\htpthm@thmbkmtrue}
+\ExecuteOptions{thmonly}
+\ExecuteOptions{thmbkm}
 \ProcessOptions\relax
+
+\ifhtpart@hyp
+\newcommand*{\thmbkm}{\bookmark[dest=\@currentHref,rellevel=1,keeplevel]{%
+        \thmt@thmname\space\csname the\thmt@envname\endcsname
+        \ifx\thmt@shortoptarg\@empty\else\space(\thmt@shortoptarg)\fi}}
+\fi
 
 \ifhtpthm@thmonly
 \AddToHook{cmd/lemma/before}{\addtocounter{theorem}{1}}
@@ -43,6 +53,29 @@
 \renewcommand*{\thehypothesis}{\thetheorem}
 \advance\@enumdepth1
 \renewcommand*{\theenumi}{\thetheorem}
+\fi
+
+\ifhtpthm@thmbkm
+\ifhtpart@hyp
+\AddToHook{cmd/thmt@theorem@postheadhook/before}{\thmbkm}
+\AddToHook{cmd/thmt@lemma@postheadhook/before}{\thmbkm}
+\AddToHook{cmd/thmt@corollary@postheadhook/before}{\thmbkm}
+\AddToHook{cmd/thmt@proposition@postheadhook/before}{\thmbkm}
+\AddToHook{cmd/thmt@conjecture@postheadhook/before}{\thmbkm}
+\AddToHook{cmd/thmt@criterion@postheadhook/before}{\thmbkm}
+\AddToHook{cmd/thmt@assertion@postheadhook/before}{\thmbkm}
+\AddToHook{cmd/thmt@definition@postheadhook/before}{\thmbkm}
+\AddToHook{cmd/thmt@condition@postheadhook/before}{\thmbkm}
+\AddToHook{cmd/thmt@problem@postheadhook/before}{\thmbkm}
+\AddToHook{cmd/thmt@example@postheadhook/before}{\thmbkm}
+\AddToHook{cmd/thmt@exercise@postheadhook/before}{\thmbkm}
+\AddToHook{cmd/thmt@algorithm@postheadhook/before}{\thmbkm}
+\AddToHook{cmd/thmt@question@postheadhook/before}{\thmbkm}
+\AddToHook{cmd/thmt@axiom@postheadhook/before}{\thmbkm}
+\AddToHook{cmd/thmt@property@postheadhook/before}{\thmbkm}
+\AddToHook{cmd/thmt@assumption@postheadhook/before}{\thmbkm}
+\AddToHook{cmd/thmt@hypothesis@postheadhook/before}{\thmbkm}
+\fi
 \fi
 
 \endinput
