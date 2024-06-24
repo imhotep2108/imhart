@@ -460,15 +460,23 @@
 
 \DeclarePairedDelimiterX{\oldabs}[1]{\lvert}{\rvert}{\ifblank{#1}{\,\cdot\,}{#1}}
 \NewDocumentCommand{\abs}{sO{}}{\IfBooleanTF{#1}{\oldabs{#2}}{\oldabs*{#2}}}
+\DeclarePairedDelimiterX{\oldbra}[1]{\langle}{\rvert}{\ifblank{#1}{\,\cdot\,}{#1}}
+\NewDocumentCommand{\bra}{sO{}}{\IfBooleanTF{#1}{\oldbra{#2}}{\oldbra*{#2}}}
+\DeclarePairedDelimiterX{\oldbraket}[2]{\langle}{\rangle}{\ifblank{#2}{\,\cdot\,\middle\vert\,\cdot\,}{#1\middle\vert#2}}
+\NewDocumentCommand{\braket}{sO{}O{}}{\IfBooleanTF{#1}{\oldbraket{#2}{#3}}{\oldbraket*{#2}{#3}}}
 \DeclarePairedDelimiterX{\oldceil}[1]{\lceil}{\rceil}{\ifblank{#1}{\,\cdot\,}{#1}}
 \NewDocumentCommand{\ceil}{sO{}}{\IfBooleanTF{#1}{\oldceil{#2}}{\oldceil*{#2}}}
 \DeclarePairedDelimiterX{\oldfloor}[1]{\lfloor}{\rfloor}{\ifblank{#1}{\,\cdot\,}{#1}}
 \NewDocumentCommand{\floor}{sO{}}{\IfBooleanTF{#1}{\oldfloor{#2}}{\oldfloor*{#2}}}
+\DeclarePairedDelimiterX{\oldket}[1]{\lvert}{\rangle}{\ifblank{#1}{\,\cdot\,}{#1}}
+\NewDocumentCommand{\ket}{sO{}}{\IfBooleanTF{#1}{\oldket{#2}}{\oldket*{#2}}}
+\DeclarePairedDelimiterX{\oldketbra}[2]{\lvert}{\rvert}{\ifblank{#2}{\,\cdot\,\middle\rangle\middle\langle\,\cdot\,}{#1\middle\rangle\middle\langle#2}}
+\NewDocumentCommand{\ketbra}{sO{}O{}}{\IfBooleanTF{#1}{\oldketbra{#2}{#3}}{\oldketbra*{#2}{#3}}}
 \DeclarePairedDelimiterX{\oldnorm}[1]{\lVert}{\rVert}{\ifblank{#1}{\,\cdot\,}{#1}}
 \NewDocumentCommand{\norm}{sO{}}{\IfBooleanTF{#1}{\oldnorm{#2}}{\oldnorm*{#2}}}
 \DeclarePairedDelimiterX{\oldset}[2]{\lbrace}{\rbrace}{\ifblank{#2}{#1}{\,#1:#2\,}}
 \NewDocumentCommand{\set}{smO{}}{\IfBooleanTF{#1}{\oldset{#2}{#3}}{\oldset*{#2}{#3}}}
-% need to complete % % bra & ket %
+% need to complete %
 
 \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
     \hskip -\arraycolsep

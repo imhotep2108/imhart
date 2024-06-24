@@ -33,69 +33,69 @@ Three additional font configurations are included in the package. Users will nee
 
 - **Minion**
   - **LGC**
-    - `CourierStd-Bold.otf`
-    - `CourierStd-BoldOblique.otf`
-    - `CourierStd-Oblique.otf`
-    - `CourierStd-Regular.otf`
-    - `MinionPro-Bold.otf`
-    - `MinionPro-BoldItalic.otf`
-    - `MinionPro-Italic.otf`
     - `MinionPro-Regular.otf`
-    - `MyriadPro-Bold.otf`
-    - `MyriadPro-BoldItalic.otf`
-    - `MyriadPro-Italic.otf`
+    - `MinionPro-Bold.otf`
+    - `MinionPro-Italic.otf`
+    - `MinionPro-BoldItalic.otf`
     - `MyriadPro-Regular.otf`
+    - `MyriadPro-Bold.otf`
+    - `MyriadPro-Italic.otf`
+    - `MyriadPro-BoldItalic.otf`
+    - `CourierStd-Regular.otf`
+    - `CourierStd-Bold.otf`
+    - `CourierStd-Oblique.otf`
+    - `CourierStd-BoldOblique.otf`
   - **CJK**
-    - `AdobeFangsongStd-Regular.otf`
-    - `AdobeHeitiStd-Regular.otf`
-    - `AdobeKaitiStd-Regular.otf`
     - `AdobeSongStd-Light.otf`
+    - `AdobeKaitiStd-Regular.otf`
+    - `AdobeHeitiStd-Regular.otf`
+    - `AdobeFangsongStd-Regular.otf`
   - **Math**
-    - `MinionMath-Capt.otf`
     - `MinionMath-Regular.otf`
+    - `MinionMath-Capt.otf`
     - `MinionMath-Tiny.otf`
 - **Noto Sans**
   - **LGC**
-    - `NotoSerif-Bold.ttf`
-    - `NotoSerif-BoldItalic.ttf`
-    - `NotoSerif-Italic.ttf`
     - `NotoSerif-Regular.ttf`
-    - `NotoSans-Bold.otf`
-    - `NotoSans-BoldItalic.otf`
-    - `NotoSans-Italic.otf`
-    - `NotoSansMono-Bold.ttf`
-    - `NotoSansMono-Regular.ttf`
+    - `NotoSerif-Bold.ttf`
+    - `NotoSerif-Italic.ttf`
+    - `NotoSerif-BoldItalic.ttf`
     - `NotoSans-Regular.otf`
+    - `NotoSans-Bold.otf`
+    - `NotoSans-Italic.otf`
+    - `NotoSans-BoldItalic.otf`
+    - `NotoSansMono-Regular.ttf`
+    - `NotoSansMono-Bold.ttf`
   - **CJK**
-    - `NotoSansMonoCJKsc-Regular.otf`
-    - `NotoSerifCJKsc-Bold.otf`
     - `NotoSerifCJKsc-Regular.otf`
-    - `NotoSansCJKsc-Bold.otf`
+    - `NotoSerifCJKsc-Bold.otf`
     - `NotoSansCJKsc-Regular.otf`
+    - `NotoSansCJKsc-Bold.otf`
+    - `NotoSansMonoCJKsc-Regular.otf`
     - `NotoSansMonoCJKsc-Bold.otf`
   - **Math**
     - `NotoSansMath-Regular.otf`
 - **Cambria**
   - **LGC**
-    - `Calibri-Bold.ttf`
-    - `Calibri-BoldItalic.ttf`
-    - `Calibri-Italic.ttf`
-    - `Calibri-Regular.ttf`
-    - `Cambria-Bold.ttf`
-    - `Cambria-BoldItalic.ttf`
-    - `Cambria-Italic.ttf`
     - `Cambria-Regular.ttf`
-    - `Consola-Bold.ttf`
-    - `Consola-BoldItalic.ttf`
-    - `Consola-Italic.ttf`
+    - `Cambria-Bold.ttf`
+    - `Cambria-Italic.ttf`
+    - `Cambria-BoldItalic.ttf`
+    - `Calibri-Regular.ttf`
+    - `Calibri-Bold.ttf`
+    - `Calibri-Italic.ttf`
+    - `Calibri-BoldItalic.ttf`
     - `Consola-Regular.ttf`
+    - `Consola-Bold.ttf`
+    - `Consola-Italic.ttf`
+    - `Consola-BoldItalic.ttf`
   - **CJK**
     - `MicrosoftYaHei-Regular.ttf`
     - `MicrosoftYaHei-Bold.ttf`
   - **Math**
     - `CambriaMath-Regular.ttf`
 
-###　Document Styles
+### Document Styles
 
 Two additional document styles are available.
 
