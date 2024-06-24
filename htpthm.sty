@@ -6,11 +6,10 @@
 
 \DeclareOption{thmonly}{\htpthm@thmonlytrue}
 \DeclareOption{thmbkm}{\htpthm@thmbkmtrue}
-\ExecuteOptions{thmonly}
-\ExecuteOptions{thmbkm}
+\ExecuteOptions{}
 \ProcessOptions\relax
 
-\ifhtpart@hyp
+\ifhtpcls@hyp
 \newcommand*{\thmbkm}{\bookmark[dest=\@currentHref,rellevel=1,keeplevel]{%
         \thmt@thmname\space\csname the\thmt@envname\endcsname
         \ifx\thmt@shortoptarg\@empty\else\space(\thmt@shortoptarg)\fi}}
@@ -56,7 +55,7 @@
 \fi
 
 \ifhtpthm@thmbkm
-\ifhtpart@hyp
+\ifhtpcls@hyp
 \AddToHook{cmd/thmt@theorem@postheadhook/before}{\thmbkm}
 \AddToHook{cmd/thmt@lemma@postheadhook/before}{\thmbkm}
 \AddToHook{cmd/thmt@corollary@postheadhook/before}{\thmbkm}

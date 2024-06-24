@@ -1,44 +1,56 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{htpart}
 
-\newif\ifhtpart@en
-\newif\ifhtpart@zh
-\newif\ifhtpart@fr
-\newif\ifhtpart@de
-\newif\ifhtpart@ru
-\newif\ifhtpart@es
-\newif\ifhtpart@notosans
-\newif\ifhtpart@twosid
-\newif\ifhtpart@twocol
-\newif\ifhtpart@hdr
-\newif\ifhtpart@bib
-\newif\ifhtpart@idx
-\newif\ifhtpart@hyp
+\newif\ifhtpcls@en
+\newif\ifhtpcls@zh
+\newif\ifhtpcls@fr
+\newif\ifhtpcls@de
+\newif\ifhtpcls@ru
+\newif\ifhtpcls@es
+\newif\ifhtpcls@plain
+\newif\ifhtpcls@minion
+\newif\ifhtpcls@notosans
+\newif\ifhtpcls@cambria
+\newif\ifhtpcls@twosid
+\newif\ifhtpcls@twocol
+\newif\ifhtpcls@hdr
+\newif\ifhtpcls@bib
+\newif\ifhtpcls@idx
+\newif\ifhtpcls@hyp
 
-\htpart@entrue
+\htpcls@plaintrue
+\htpcls@entrue
 
-\DeclareOption{zh}{\htpart@enfalse\htpart@zhtrue}
-\DeclareOption{fr}{\htpart@enfalse\htpart@frtrue}
-\DeclareOption{de}{\htpart@enfalse\htpart@detrue}
-\DeclareOption{ru}{\htpart@enfalse\htpart@rutrue}
-\DeclareOption{es}{\htpart@enfalse\htpart@estrue}
-\DeclareOption{notosans}{\htpart@notosanstrue}
-\DeclareOption{basic}{\htpart@twosidtrue\htpart@hdrtrue\htpart@hyptrue}
-\DeclareOption{exten}{\htpart@twosidtrue\htpart@twocoltrue\htpart@hdrtrue\htpart@bibtrue\htpart@idxtrue\htpart@hyptrue}
-\DeclareOption{twosid}{\htpart@twosidtrue}
-\DeclareOption{twocol}{\htpart@twocoltrue}
-\DeclareOption{hdr}{\htpart@hdrtrue}
-\DeclareOption{bib}{\htpart@bibtrue}
-\DeclareOption{idx}{\htpart@idxtrue}
-\DeclareOption{hyp}{\htpart@hyptrue}
-\ExecuteOptions{basic}
+\DeclareOption{zh}{\htpcls@enfalse\htpcls@zhtrue}
+\DeclareOption{fr}{\htpcls@enfalse\htpcls@frtrue}
+\DeclareOption{de}{\htpcls@enfalse\htpcls@detrue}
+\DeclareOption{ru}{\htpcls@enfalse\htpcls@rutrue}
+\DeclareOption{es}{\htpcls@enfalse\htpcls@estrue}
+\DeclareOption{antique}{\htpcls@plainfalse\htpcls@miniontrue}
+\DeclareOption{modern}{\htpcls@plainfalse\htpcls@notosanstrue}
+\DeclareOption{minion}{\htpcls@plainfalse\htpcls@miniontrue}
+\DeclareOption{notosans}{\htpcls@plainfalse\htpcls@notosanstrue}
+\DeclareOption{cambria}{\htpcls@plainfalse\htpcls@minionfalse\htpcls@notosansfalse\htpcls@cambriatrue}
+\DeclareOption{basic}{\htpcls@twosidtrue\htpcls@hdrtrue\htpcls@hyptrue}
+\DeclareOption{exten}{\htpcls@twosidtrue\htpcls@twocoltrue\htpcls@hdrtrue\htpcls@bibtrue\htpcls@idxtrue\htpcls@hyptrue}
+\DeclareOption{twosid}{\htpcls@twosidtrue}
+\DeclareOption{twocol}{\htpcls@twocoltrue}
+\DeclareOption{hdr}{\htpcls@hdrtrue}
+\DeclareOption{bib}{\htpcls@bibtrue}
+\DeclareOption{idx}{\htpcls@idxtrue}
+\DeclareOption{hyp}{\htpcls@hyptrue}
+\ExecuteOptions{}
 \ProcessOptions\relax
 
-\LoadClass[\ifhtpart@twosid twoside\else oneside\fi]{article}
+\LoadClass[\ifhtpcls@twosid twoside\else oneside\fi]{article}
 
 \RequirePackage{babel}
 \RequirePackage{csquotes}
+\ifhtpcls@zh
+\RequirePackage[fontset=none,heading=true]{ctex}
+\else
 \RequirePackage{xeCJK}
+\fi
 
 \RequirePackage{geometry}
 \RequirePackage{multicol}
@@ -65,14 +77,14 @@
 
 \RequirePackage{authblk}
 \RequirePackage{titling}
-\ifhtpart@bib
+\ifhtpcls@bib
 \RequirePackage{biblatex}
 \fi
-\ifhtpart@idx
+\ifhtpcls@idx
 \RequirePackage{imakeidx}
 \fi
 
-\ifhtpart@hyp
+\ifhtpcls@hyp
 \RequirePackage{hyperref}
 \RequirePackage{bookmark}
 \fi
@@ -80,7 +92,7 @@
 
 %%%%%%%%%%%%%%%% Preamble %%%%%%%%%%%%%%%%
 
-\ifhtpart@en
+\ifhtpcls@en
 \babelprovide[import,main]{english}
 \babelprovide[import]{chinese}
 \babelprovide[import]{french}
@@ -88,7 +100,7 @@
 \babelprovide[import]{russian}
 \babelprovide[import]{spanish}
 \fi
-\ifhtpart@zh
+\ifhtpcls@zh
 \babelprovide[import,main]{chinese}
 \babelprovide[import]{english}
 \babelprovide[import]{french}
@@ -96,7 +108,7 @@
 \babelprovide[import]{russian}
 \babelprovide[import]{spanish}
 \fi
-\ifhtpart@fr
+\ifhtpcls@fr
 \babelprovide[import,main]{french}
 \babelprovide[import]{chinese}
 \babelprovide[import]{english}
@@ -104,7 +116,7 @@
 \babelprovide[import]{russian}
 \babelprovide[import]{spanish}
 \fi
-\ifhtpart@de
+\ifhtpcls@de
 \babelprovide[import,main]{german}
 \babelprovide[import]{chinese}
 \babelprovide[import]{english}
@@ -112,7 +124,7 @@
 \babelprovide[import]{russian}
 \babelprovide[import]{spanish}
 \fi
-\ifhtpart@ru
+\ifhtpcls@ru
 \babelprovide[import,main]{russian}
 \babelprovide[import]{chinese}
 \babelprovide[import]{english}
@@ -120,7 +132,7 @@
 \babelprovide[import]{german}
 \babelprovide[import]{spanish}
 \fi
-\ifhtpart@es
+\ifhtpcls@es
 \babelprovide[import,main]{spanish}
 \babelprovide[import]{chinese}
 \babelprovide[import]{english}
@@ -129,15 +141,56 @@
 \babelprovide[import]{russian}
 \fi
 
-\defaultfontfeatures{Extension=.otf}
-\ifhtpart@notosans
-\defaultfontfeatures{Path=fonts/}
+\ifhtpcls@plain
 \babelfont{rm}[
-    BoldFont        = NotoSans-Bold,
-    ItalicFont      = NotoSans-Italic,
-    BoldItalicFont  = NotoSans-BoldItalic
-]{NotoSans-Regular}
+    Extension       = .otf,
+    BoldFont        = NewCM10-Bold,
+    ItalicFont      = NewCM10-BookItalic,
+    BoldItalicFont  = NewCM10-BoldItalic
+]{NewCM10-Book}
 \babelfont{sf}[
+    Extension       = .otf,
+    BoldFont        = NewCMSans10-Bold,
+    ItalicFont      = NewCMSans10-BookOblique,
+    BoldItalicFont  = NewCMSans10-BoldOblique
+]{NewCMSans10-Book}
+\babelfont{tt}[
+    Extension       = .otf,
+    BoldFont        = NewCMMono10-Bold,
+    ItalicFont      = NewCMMono10-BookItalic,
+    BoldItalicFont  = NewCMMono10-BoldOblique
+]{NewCMMono10-Book}
+\fi
+\ifhtpcls@minion
+\babelfont{rm}[
+    Extension       = .otf,
+    BoldFont        = MinionPro-Bold,
+    ItalicFont      = MinionPro-Italic,
+    BoldItalicFont  = MinionPro-BoldItalic
+]{MinionPro-Regular}
+\babelfont{sf}[
+    Extension       = .otf,
+    BoldFont        = MyriadPro-Bold,
+    ItalicFont      = MyriadPro-Italic,
+    BoldItalicFont  = MyriadPro-BoldItalic
+]{MyriadPro-Regular}
+\babelfont{tt}[
+    Extension       = .otf,
+    BoldFont        = CourierStd-Bold,
+    ItalicFont      = CourierStd-Oblique,
+    BoldItalicFont  = CourierStd-BoldOblique
+]{CourierStd-Regular}
+\fi
+\ifhtpcls@notosans
+\renewcommand\familydefault{\sfdefault}
+\babelfont{rm}[
+    Extension       = .ttf,
+    BoldFont        = NotoSerif-Bold,
+    ItalicFont      = NotoSerif-Italic,
+    BoldItalicFont  = NotoSerif-BoldItalic
+]{NotoSerif-Regular}
+\babelfont{sf}[
+    Extension       = .otf,
     BoldFont        = NotoSans-Bold,
     ItalicFont      = NotoSans-Italic,
     BoldItalicFont  = NotoSans-BoldItalic
@@ -148,22 +201,26 @@
     ItalicFont      = NotoSansMono-Regular,
     BoldItalicFont  = NotoSansMono-Bold
 ]{NotoSansMono-Regular}
-\else
+\fi
+\ifhtpcls@cambria
 \babelfont{rm}[
-    BoldFont        = NewCM10-Bold,
-    ItalicFont      = NewCM10-BookItalic,
-    BoldItalicFont  = NewCM10-BoldItalic
-]{NewCM10-Book}
+    Extension       = .ttf,
+    BoldFont        = Cambria-Bold,
+    ItalicFont      = Cambria-Italic,
+    BoldItalicFont  = Cambria-BoldItalic
+]{Cambria-Regular}
 \babelfont{sf}[
-    BoldFont        = NewCMSans10-Bold,
-    ItalicFont      = NewCMSans10-BookOblique,
-    BoldItalicFont  = NewCMSans10-BoldOblique
-]{NewCMSans10-Book}
+    Extension       = .ttf,
+    BoldFont        = Calibri-Bold,
+    ItalicFont      = Calibri-Italic,
+    BoldItalicFont  = Calibri-BoldItalic
+]{Calibri-Regular}
 \babelfont{tt}[
-    BoldFont        = NewCMMono10-Bold,
-    ItalicFont      = NewCMMono10-BookItalic,
-    BoldItalicFont  = NewCMMono10-BoldOblique
-]{NewCMMono10-Book}
+    Extension       = .ttf,
+    BoldFont        = Consola-Bold,
+    ItalicFont      = Consola-Italic,
+    BoldItalicFont  = Consola-BoldItalic
+]{Consola-Regular}
 \fi
 
 \setlocalecaption{english}{theorem}{Theorem}
@@ -266,46 +323,97 @@
 
 \DeclareQuoteStyle{chinese}{\textquotedblleft}{\textquotedblright}{\textquoteleft}{\textquoteright}
 
-\xeCJKsetup{LoadFandol=false}
-
-\ifhtpart@notosans
+\ifhtpcls@plain
 \setCJKmainfont[
-    BoldFont        = NotoSansCJKsc-Bold,
-    ItalicFont      = NotoSansCJKsc-Regular,
-    SmallCapsFont   = NotoSansCJKsc-Regular,
-    BoldItalicFont  = NotoSansCJKsc-Bold
-]{NotoSansCJKsc-Regular}
-\setCJKsansfont[
-    BoldFont        = NotoSansCJKsc-Bold,
-    ItalicFont      = NotoSansCJKsc-Regular,
-    SmallCapsFont   = NotoSansCJKsc-Regular,
-    BoldItalicFont  = NotoSansCJKsc-Bold
-]{NotoSansCJKsc-Regular}
-\setCJKmonofont[
-    BoldFont        = NotoSansMonoCJKsc-Bold,
-    ItalicFont      = NotoSansMonoCJKsc-Regular,
-    SmallCapsFont   = NotoSansMonoCJKsc-Regular,
-    BoldItalicFont  = NotoSansMonoCJKsc-Bold
-]{NotoSansMonoCJKsc-Regular}
-\else
-\setCJKmainfont[
+    Extension       = .otf,
     BoldFont        = FandolSong-Bold,
     ItalicFont      = FandolKai-Regular,
     SmallCapsFont   = FandolSong-Regular,
-    BoldItalicFont  = FandolSong-Bold
+    BoldItalicFont  = FandolKai-Regular
 ]{FandolSong-Regular}
 \setCJKsansfont[
+    Extension       = .otf,
     BoldFont        = FandolHei-Bold,
     ItalicFont      = FandolHei-Regular,
     SmallCapsFont   = FandolHei-Regular,
     BoldItalicFont  = FandolHei-Bold
 ]{FandolHei-Regular}
 \setCJKmonofont[
+    Extension       = .otf,
     BoldFont        = FandolFang-Regular,
     ItalicFont      = FandolFang-Regular,
     SmallCapsFont   = FandolFang-Regular,
     BoldItalicFont  = FandolFang-Regular
 ]{FandolFang-Regular}
+\fi
+\ifhtpcls@minion
+\setCJKmainfont[
+    Extension       = .otf,
+    BoldFont        = AdobeSongStd-Light,
+    ItalicFont      = AdobeKaitiStd-Regular,
+    SmallCapsFont   = AdobeSongStd-Light,
+    BoldItalicFont  = AdobeKaitiStd-Regular
+]{AdobeSongStd-Light}
+\setCJKsansfont[
+    Extension       = .otf,
+    BoldFont        = AdobeHeitiStd-Regular,
+    ItalicFont      = AdobeHeitiStd-Regular,
+    SmallCapsFont   = AdobeHeitiStd-Regular,
+    BoldItalicFont  = AdobeHeitiStd-Regular
+]{AdobeHeitiStd-Regular}
+\setCJKmonofont[
+    Extension       = .otf,
+    BoldFont        = AdobeFangsongStd-Regular,
+    ItalicFont      = AdobeFangsongStd-Regular,
+    SmallCapsFont   = AdobeFangsongStd-Regular,
+    BoldItalicFont  = AdobeFangsongStd-Regular
+]{AdobeFangsongStd-Regular}
+\fi
+\ifhtpcls@notosans
+\setCJKmainfont[
+    Extension       = .otf,
+    BoldFont        = NotoSerifCJKsc-Bold,
+    ItalicFont      = NotoSerifCJKsc-Regular,
+    SmallCapsFont   = NotoSerifCJKsc-Regular,
+    BoldItalicFont  = NotoSerifCJKsc-Bold
+]{NotoSerifCJKsc-Regular}
+\setCJKsansfont[
+    Extension       = .otf,
+    BoldFont        = NotoSansCJKsc-Bold,
+    ItalicFont      = NotoSansCJKsc-Regular,
+    SmallCapsFont   = NotoSansCJKsc-Regular,
+    BoldItalicFont  = NotoSansCJKsc-Bold
+]{NotoSansCJKsc-Regular}
+\setCJKmonofont[
+    Extension       = .otf,
+    BoldFont        = NotoSansMonoCJKsc-Bold,
+    ItalicFont      = NotoSansMonoCJKsc-Regular,
+    SmallCapsFont   = NotoSansMonoCJKsc-Regular,
+    BoldItalicFont  = NotoSansMonoCJKsc-Bold
+]{NotoSansMonoCJKsc-Regular}
+\fi
+\ifhtpcls@cambria
+\setCJKmainfont[
+    Extension       = .ttf,
+    BoldFont        = MicrosoftYaHei-Bold,
+    ItalicFont      = MicrosoftYaHei-Regular,
+    SmallCapsFont   = MicrosoftYaHei-Regular,
+    BoldItalicFont  = MicrosoftYaHei-Bold
+]{MicrosoftYaHei-Regular}
+\setCJKsansfont[
+    Extension       = .ttf,
+    BoldFont        = MicrosoftYaHei-Bold,
+    ItalicFont      = MicrosoftYaHei-Regular,
+    SmallCapsFont   = MicrosoftYaHei-Regular,
+    BoldItalicFont  = MicrosoftYaHei-Bold
+]{MicrosoftYaHei-Regular}
+\setCJKmonofont[
+    Extension       = .ttf,
+    BoldFont        = MicrosoftYaHei-Bold,
+    ItalicFont      = MicrosoftYaHei-Regular,
+    SmallCapsFont   = MicrosoftYaHei-Regular,
+    BoldItalicFont  = MicrosoftYaHei-Bold
+]{MicrosoftYaHei-Regular}
 \fi
 
 %%%%%%%%%%%%%%%% Preamble %%%%%%%%%%%%%%%%
@@ -313,21 +421,21 @@
 %%%%%%%%%%%%%%%% Page and Text %%%%%%%%%%%%%%%%
 
 \geometry{a4paper}
-\ifhtpart@twocol
+\ifhtpcls@twocol
 \geometry{margin=1in}
 \fi
 
 \setlength{\columnseprule}{0.4pt}
 
-\ifhtpart@twocol
+\ifhtpcls@twocol
 \AddToHook{begindocument/end}{\begin{multicols}{2}}
 \AddToHook{enddocument}{\end{multicols}}
 \fi
 
-\ifhtpart@hdr
+\ifhtpcls@hdr
 \AddToHook{begindocument}{
     \pagestyle{fancy}
-    \ifhtpart@twosid
+    \ifhtpcls@twosid
     \fancyfoot[OR,EL]{\thepage}
     \fancyfoot[OC]{\ifdefined\thetitle\thetitle\fi}
     \fancyfoot[EC]{Imhotep}
@@ -375,13 +483,27 @@
 
 \unimathsetup{warnings-off={mathtools-colon,mathtools-overbracket},partial=upright}
 
-\ifhtpart@notosans
-\setmathfont[StylisticSet=2]{NotoSansMath-Regular}
-\setmathfont[range={cal,bfcal},StylisticSet=1]{NotoSansMath-Regular}
-\else
-\setmathfont[StylisticSet=2]{NewCMMath-Book}
-\setmathfont[range={scr,bfscr},StylisticSet=1]{NewCMMath-Book}
-\setmathfont[range=bb,StylisticSet=3]{NewCMMath-Book}
+\ifhtpcls@plain
+\setmathfont[Extension=.otf,StylisticSet=2]{NewCMMath-Book}
+\setmathfont[Extension=.otf,range={scr,bfscr},StylisticSet=1]{NewCMMath-Book}
+\setmathfont[Extension=.otf,range=bb,StylisticSet=3]{NewCMMath-Book}
+\fi
+\ifhtpcls@minion
+\setmathfont[
+    Extension=.otf,
+    SizeFeatures={
+        {Size=8.4-,TextStyle},
+        {Size=6-8.4,Font=MinionMath-Capt,ScriptStyle},
+        {Size=-6,Font=MinionMath-Tiny,ScriptScriptStyle}
+    }
+]{MinionMath-Regular}
+\fi
+\ifhtpcls@notosans
+\setmathfont[Extension=.otf,StylisticSet=2]{NotoSansMath-Regular}
+\setmathfont[Extension=.otf,range={cal,bfcal},StylisticSet=1]{NotoSansMath-Regular}
+\fi
+\ifhtpcls@cambria
+\setmathfont[Extension=.ttf]{CambriaMath-Regular}
 \fi
 
 \providecommand*{\eu}{\ensuremath{\symup{e}}}
@@ -449,23 +571,23 @@
 
 %%%%%%%%%%%%%%%% Front Matter and Back Matter %%%%%%%%%%%%%%%%
 
-\ifhtpart@bib
+\ifhtpcls@bib
 \ExecuteBibliographyOptions{autolang=other}
 \addbibresource{refs.bib}
 \DeclarePrintbibliographyDefaults{heading=bibintoc}
 \nocite{*}
 \fi
 
-\ifhtpart@idx
-\indexsetup{noclearpage,firstpagestyle=\ifhtpart@hdr fancy\else plain\fi}
-\makeindex[intoc,columns=\ifhtpart@twocol1\else2\fi]
+\ifhtpcls@idx
+\indexsetup{noclearpage,firstpagestyle=\ifhtpcls@hdr fancy\else plain\fi}
+\makeindex[intoc,columns=\ifhtpcls@twocol1\else2\fi]
 \fi
 
 %%%%%%%%%%%%%%%% Front Matter and Back Matter %%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%% hyperref %%%%%%%%%%%%%%%%
 
-\ifhtpart@hyp
+\ifhtpcls@hyp
 \hypersetup{colorlinks}
 \bookmarksetup{numbered}
 \fi

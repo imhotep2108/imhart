@@ -1,55 +1,82 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{fancyhtp}
 
+\newif\iffancyhtp@plain
+\newif\iffancyhtp@antique
+\newif\iffancyhtp@modern
 \newif\iffancyhtp@decor
 
+\fancyhtp@plaintrue
+
+\DeclareOption{antique}{\fancyhtp@plainfalse\fancyhtp@antiquetrue}
+\DeclareOption{modern}{\fancyhtp@plainfalse\fancyhtp@moderntrue}
 \DeclareOption{decor}{\fancyhtp@decortrue}
-\ExecuteOptions{decor}
+\@ifclasswith{htpart}{antique}{\ExecuteOptions{antique}}{}
+\@ifclasswith{htpart}{modern}{\ExecuteOptions{modern}}{}
+\@ifclasswith{htpbook}{antique}{\ExecuteOptions{antique}}{}
+\@ifclasswith{htpbook}{modern}{\ExecuteOptions{modern}}{}
+\ExecuteOptions{}
 \ProcessOptions\relax
 
 \RequirePackage{xcolor}
+\RequirePackage{pgfornament}
 
+\definecolor{soil}{HTML}{59260b}
+\definecolor{fall}{HTML}{da9100}
+\definecolor{gold}{HTML}{d4af37}
 \definecolor{navy}{HTML}{003153}
 \definecolor{teal}{HTML}{008c8c}
 \definecolor{blue}{HTML}{002fa7}
+\iffancyhtp@antique
+\colorlet{accent1}{soil}
+\colorlet{accent2}{fall}
+\colorlet{accent3}{gold}
+\fi
+\iffancyhtp@modern
+\colorlet{accent1}{navy}
+\colorlet{accent2}{teal}
+\colorlet{accent3}{blue}
+\fi
 
+\iffancyhtp@plain
+\else
 \let\oldfootnoterule\footnoterule
-\renewcommand{\footnoterule}{{\color{navy}\oldfootnoterule}}
+\renewcommand{\footnoterule}{{\color{accent1}\oldfootnoterule}}
 
 \long\def\@makefntext{%
     \cref@constructprefix{footnote}{\cref@result}
     \protected@edef\cref@currentlabel{%
         [footnote][\arabic{footnote}][\cref@result]\p@footnote\@thefnmark
     }%
-    \begingroup\color{teal}\cref@old@makefntext\endgroup}
+    \begingroup\color{accent2}\cref@old@makefntext\endgroup}
 
-\renewcommand{\columnseprulecolor}{\color{navy}}
+\renewcommand{\columnseprulecolor}{\color{accent1}}
 
 \let\oldheadrule\headrule
-\renewcommand{\headrule}{{\color{navy}\oldheadrule}}
+\renewcommand{\headrule}{{\color{accent1}\oldheadrule}}
 \let\oldfootrule\footrule
-\renewcommand{\footrule}{{\color{navy}\oldfootrule}}
+\renewcommand{\footrule}{{\color{accent1}\oldfootrule}}
 
-\ifhtpart@hdr
+\ifhtpcls@hdr
 \AddToHook{begindocument}{
-    \ifhtpart@twosid
-    \fancyfoot[OR,EL]{\color{teal}\thepage}
+    \ifhtpcls@twosid
+    \fancyfoot[OR,EL]{\color{accent2}\thepage}
     \else
-    \fancyfoot[R]{\color{teal}\thepage}
+    \fancyfoot[R]{\color{accent2}\thepage}
     \fi
 }
 \fi
 
-\setlist{font=\color{teal}}
+\setlist{font=\color{accent2}}
 
-\AddToHook{cmd/make@display@tag/before}{\color{teal}}
+\AddToHook{cmd/make@display@tag/before}{\color{accent2}}
 
 \newtheoremstyle{plain}
     {\topsep}
     {\topsep}
     {\itshape}
     {}
-    {\bfseries\color{teal}}
+    {\bfseries\color{accent2}}
     {.}
     {5pt plus 1pt minus 1pt}
     {}
@@ -58,7 +85,7 @@
     {\topsep}
     {\normalfont}
     {}
-    {\bfseries\color{teal}}
+    {\bfseries\color{accent2}}
     {.}
     {5pt plus 1pt minus 1pt}
     {}
@@ -67,20 +94,27 @@
     {\topsep}
     {\normalfont}
     {}
-    {\itshape\color{teal}}
+    {\itshape\color{accent2}}
     {.}
     {5pt plus 1pt minus 1pt}
     {}
 
-\captionsetup{labelfont={color=teal}}
+\captionsetup{labelfont={color=accent2}}
 
-\ifhtpart@bib
-\DeclareFieldFormat{labelnumberwidth}{\color{teal}\mkbibbrackets{#1}}
-\DeclareFieldFormat{labelalphawidth}{\color{teal}\mkbibbrackets{#1}}
+\ifhtpcls@bib
+\DeclareFieldFormat{labelnumberwidth}{\color{accent2}\mkbibbrackets{#1}}
+\DeclareFieldFormat{labelalphawidth}{\color{accent2}\mkbibbrackets{#1}}
+\fi
 \fi
 
-\newcommand\pagedecor{
-    \begin{tikzpicture}[remember picture,overlay,navy,shorten <= -10pt,shorten >= -10pt]
+\newcommand\antiquepd{
+    \begin{tikzpicture}[remember picture,overlay]
+        \pgfornamentline[color=accent1]{[shift={(\if@twoside\ifodd\thepage-0.06\paperheight\else0.06\paperheight\fi\else-0.06\paperheight\fi,-0.06\paperheight)}]current page.north \if@twoside\ifodd\thepage east\else west\fi\else east\fi}{[shift={(\if@twoside\ifodd\thepage-0.06\paperheight\else0.06\paperheight\fi\else-0.06\paperheight\fi,0.03\paperheight)}]current page.south \if@twoside\ifodd\thepage east\else west\fi\else east\fi}{3}{71}
+    \end{tikzpicture}
+}
+
+\newcommand\modernpd{
+    \begin{tikzpicture}[remember picture,overlay,accent1,shorten <= -10pt,shorten >= -10pt]
         \newcommand\pdangle{45}
         \coordinate (auxa) at ([yshift=-0.04\paperheight]current page.north east);
         \coordinate (auxb) at ([yshift=-0.50\paperheight]current page.north east);
@@ -113,11 +147,17 @@
 }
 
 \iffancyhtp@decor
-\AddToHook{shipout/background}[pagedecor]{\pagedecor}
+\iffancyhtp@antique
+\AddToHook{shipout/background}[pagedecor]{\antiquepd}
+\fi
+\iffancyhtp@modern
+\AddToHook{shipout/background}[pagedecor]{\modernpd}
+\fi
+\AddToHook{shipout/background}[emptypagedecor]{}
 \fi
 \DeclareHookRule{shipout/background}{pgfrcs}{after}{pagedecor}
 
-\DeclareTextFontCommand{\blue}{\color{blue}}
+\DeclareTextFontCommand{\coloremph}{\iffancyhtp@plain\em\else\color{accent3}\fi}
 
 \endinput
 

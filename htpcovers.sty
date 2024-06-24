@@ -1,0 +1,98 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{htpcovers}
+
+\newif\ifhtpcovers@plain
+\newif\ifhtpcovers@antique
+\newif\ifhtpcovers@modern
+
+\htpcovers@plaintrue
+
+\DeclareOption{antique}{\htpcovers@plainfalse\htpcovers@antiquetrue}
+\DeclareOption{modern}{\htpcovers@plainfalse\htpcovers@moderntrue}
+\@ifclasswith{htpart}{antique}{\ExecuteOptions{antique}}{}
+\@ifclasswith{htpart}{modern}{\ExecuteOptions{modern}}{}
+\@ifclasswith{htpbook}{antique}{\ExecuteOptions{antique}}{}
+\@ifclasswith{htpbook}{modern}{\ExecuteOptions{modern}}{}
+\ExecuteOptions{}
+\ProcessOptions\relax
+
+\RequirePackage{xcolor}
+
+\definecolor{soil}{HTML}{59260b}
+\definecolor{fall}{HTML}{da9100}
+\definecolor{gold}{HTML}{d4af37}
+\definecolor{navy}{HTML}{003153}
+\definecolor{teal}{HTML}{008c8c}
+\definecolor{blue}{HTML}{002fa7}
+\ifhtpcovers@antique
+\colorlet{accent1}{soil}
+\colorlet{accent2}{fall}
+\colorlet{accent3}{gold}
+\fi
+\ifhtpcovers@modern
+\colorlet{accent1}{navy}
+\colorlet{accent2}{teal}
+\colorlet{accent3}{blue}
+\fi
+
+\DeclareRobustCommand\covertitle[1]{\gdef\@covertitle{#1}}
+\DeclareRobustCommand\coverauthor[1]{\gdef\@coverauthor{#1}}
+\DeclareRobustCommand\coveraffil[1]{\gdef\@coveraffil{#1}}
+\DeclareRobustCommand\coverdate[1]{\gdef\@coverdate{#1}}
+\DeclareRobustCommand\coverserie[1]{\gdef\@coverserie{#1}}
+\DeclareRobustCommand\covernumber[1]{\gdef\@covernumber{#1}}
+\DeclareRobustCommand\coverpublisher[1]{\gdef\@coverpublisher{#1}}
+\DeclareRobustCommand\coverlogo[1]{\gdef\@coverlogo{#1}}
+\DeclareRobustCommand\coverfooter[1]{\gdef\@coverfooter{#1}}
+
+\gdef\@covertitle{\@title}
+\gdef\@coverauthor{}
+\gdef\@coveraffil{}
+\gdef\@coverdate{\@date}
+\gdef\@coverserie{}
+\gdef\@covernumber{}
+\gdef\@coverpublisher{}
+\gdef\@coverlogo{}
+\gdef\@coverfooter{}
+
+\newcommand{\makecover}[1][\ifhtpcovers@antique antique\fi\ifhtpcovers@modern modern\fi]{
+    \edef\coverstylename{#1}
+    \edef\antiquestylename{antique}
+    \edef\modernstylename{modern}
+    \newgeometry{margin=0pt}
+    \DeclareHookRule{shipout/foreground}{emptylogo}{voids}{logo}
+    \DeclareHookRule{shipout/background}{emptypagedecor}{voids}{pagedecor}
+    \ifx\coverstylename\antiquestylename
+    \begin{titlepage}
+        \begin{tikzpicture}[remember picture,overlay]
+            \node [accent3] at (current page.center) {\Huge Hello, Antique!};
+        \end{tikzpicture}
+    \end{titlepage}
+    \fi
+    \ifx\coverstylename\modernstylename
+    \begin{titlepage}
+        \begin{tikzpicture}[remember picture,overlay]
+            \fill [accent1] ($(current page.south west)+(0,\ifx\@coverfooter\@empty0\else30pt\fi)$) -- ($(current page.south east)+(0,\ifx\@coverfooter\@empty0\else30pt\fi)$) -- ($(current page.south east)+(0,{0.25*\paperheight})$) -- ($(current page.south west)+(0,{0.5*\paperheight})$) -- cycle;
+            \fill [accent2] ($(current page.south west)+(0,{0.5*\paperheight})$) -- ($(current page.north west)+({0.125*(\paperheight/\paperwidth)*\paperheight},0)$) -- (current page.north west) -- cycle;
+            \fill [accent1] ($(current page.north west)+({0.125*(\paperheight/\paperwidth)*\paperheight},0)$) -- ($(current page.north east)+(0,{0.25*(0.125*(\paperheight/\paperwidth)^2-1)*\paperheight})$) -- (current page.north east) -- cycle;
+            \node [below right] at ($(current page.north west)+(15pt,-15pt)$) {\@coverlogo};
+            \node [below left,white] at ($(current page.north east)+(-15pt,
+            \ifx\@covernumber\@empty-30pt\else-15pt\fi)$) {\fontsize{30}{45}\selectfont\@coverserie};
+            \node [below left,white] at ($(current page.north east)+(-15pt,-75pt)$) {\fontsize{40}{60}\selectfont\@covernumber};
+            \node [left,accent3] at ($(current page.east)+(-15pt,\ifx\@coveraffil\@empty150pt\else180pt\fi)$) {\fontsize{40}{60}\selectfont\@coverauthor};
+            \node [left,accent3] at ($(current page.east)+(-15pt,135pt)$) {\fontsize{30}{45}\selectfont\@coveraffil};
+            \node [left,accent3] at ($(current page.east)+(-15pt,30pt)$) {\fontsize{50}{75}\selectfont\@covertitle};
+            \node [right,white] at ($(current page.west)+(15pt,-120pt)$) {\fontsize{20}{30}\selectfont
+            \ifhtpcls@en Last updated on\fi\ifhtpcls@zh 最后更新于\fi\ifhtpcls@fr Dernière mise à jour le\fi\ifhtpcls@de Zuletzt aktualisiert am\fi\ifhtpcls@ru Последнее обновление\fi\ifhtpcls@es Última actualización el\fi};
+            \node [right,white] at ($(current page.west)+(15pt,-165pt)$) {\fontsize{30}{45}\selectfont\@coverdate};
+            \node [above right,white] at ($(current page.south west)+(15pt,45pt)$) {\fontsize{30}{45}\selectfont\@coverpublisher};
+            \node [above,accent3] at (current page.south) {\fontsize{20}{30}\selectfont\@coverfooter};
+        \end{tikzpicture}
+    \end{titlepage}
+    \fi
+    \ClearHookRule{shipout/background}{pagedecor}{emptypagedecor}
+    \ClearHookRule{shipout/foreground}{logo}{emptylogo}
+    \restoregeometry
+}
+
+\endinput
