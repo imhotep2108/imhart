@@ -144,83 +144,95 @@
 \ifhtpcls@plain
 \babelfont{rm}[
     Extension       = .otf,
-    BoldFont        = NewCM10-Bold,
-    ItalicFont      = NewCM10-BookItalic,
-    BoldItalicFont  = NewCM10-BoldItalic
-]{NewCM10-Book}
+    UprightFont     = *-Book,
+    BoldFont        = *-Bold,
+    ItalicFont      = *-BookItalic,
+    BoldItalicFont  = *-BoldItalic
+]{NewCM10}
 \babelfont{sf}[
     Extension       = .otf,
-    BoldFont        = NewCMSans10-Bold,
-    ItalicFont      = NewCMSans10-BookOblique,
-    BoldItalicFont  = NewCMSans10-BoldOblique
-]{NewCMSans10-Book}
+    UprightFont     = *-Book,
+    BoldFont        = *-Bold,
+    ItalicFont      = *-BookOblique,
+    BoldItalicFont  = *-BoldOblique
+]{NewCMSans10}
 \babelfont{tt}[
     Extension       = .otf,
-    BoldFont        = NewCMMono10-Bold,
-    ItalicFont      = NewCMMono10-BookItalic,
-    BoldItalicFont  = NewCMMono10-BoldOblique
-]{NewCMMono10-Book}
+    UprightFont     = *-Book,
+    BoldFont        = *-Bold,
+    ItalicFont      = *-BookItalic,
+    BoldItalicFont  = *-BoldOblique
+]{NewCMMono10}
 \fi
 \ifhtpcls@minion
 \babelfont{rm}[
     Extension       = .otf,
-    BoldFont        = MinionPro-Bold,
-    ItalicFont      = MinionPro-Italic,
-    BoldItalicFont  = MinionPro-BoldItalic
-]{MinionPro-Regular}
+    UprightFont     = *-Regular,
+    BoldFont        = *-Bold,
+    ItalicFont      = *-Italic,
+    BoldItalicFont  = *-BoldItalic
+]{MinionPro}
 \babelfont{sf}[
     Extension       = .otf,
-    BoldFont        = MyriadPro-Bold,
-    ItalicFont      = MyriadPro-Italic,
-    BoldItalicFont  = MyriadPro-BoldItalic
-]{MyriadPro-Regular}
+    UprightFont     = *-Regular,
+    BoldFont        = *-Bold,
+    ItalicFont      = *-Italic,
+    BoldItalicFont  = *-BoldItalic
+]{MyriadPro}
 \babelfont{tt}[
     Extension       = .otf,
-    BoldFont        = CourierStd-Bold,
-    ItalicFont      = CourierStd-Oblique,
-    BoldItalicFont  = CourierStd-BoldOblique
-]{CourierStd-Regular}
+    UprightFont     = *-Regular,
+    BoldFont        = *-Bold,
+    ItalicFont      = *-Oblique,
+    BoldItalicFont  = *-BoldOblique
+]{CourierStd}
 \fi
 \ifhtpcls@notosans
 \renewcommand\familydefault{\sfdefault}
 \babelfont{rm}[
     Extension       = .ttf,
-    BoldFont        = NotoSerif-Bold,
-    ItalicFont      = NotoSerif-Italic,
-    BoldItalicFont  = NotoSerif-BoldItalic
-]{NotoSerif-Regular}
+    UprightFont     = *-Regular,
+    BoldFont        = *-Bold,
+    ItalicFont      = *-Italic,
+    BoldItalicFont  = *-BoldItalic
+]{NotoSerif}
 \babelfont{sf}[
     Extension       = .otf,
-    BoldFont        = NotoSans-Bold,
-    ItalicFont      = NotoSans-Italic,
-    BoldItalicFont  = NotoSans-BoldItalic
-]{NotoSans-Regular}
+    UprightFont     = *-Regular,
+    BoldFont        = *-Bold,
+    ItalicFont      = *-Italic,
+    BoldItalicFont  = *-BoldItalic
+]{NotoSans}
 \babelfont{tt}[
     Extension       = .ttf,
-    BoldFont        = NotoSansMono-Bold,
-    ItalicFont      = NotoSansMono-Regular,
-    BoldItalicFont  = NotoSansMono-Bold
-]{NotoSansMono-Regular}
+    UprightFont     = *-Regular,
+    BoldFont        = *-Bold,
+    ItalicFont      = *-Regular,
+    BoldItalicFont  = *-Bold
+]{NotoSansMono}
 \fi
 \ifhtpcls@cambria
 \babelfont{rm}[
     Extension       = .ttf,
-    BoldFont        = Cambria-Bold,
-    ItalicFont      = Cambria-Italic,
-    BoldItalicFont  = Cambria-BoldItalic
-]{Cambria-Regular}
+    UprightFont     = *-Regular,
+    BoldFont        = *-Bold,
+    ItalicFont      = *-Italic,
+    BoldItalicFont  = *-BoldItalic
+]{Cambria}
 \babelfont{sf}[
     Extension       = .ttf,
-    BoldFont        = Calibri-Bold,
-    ItalicFont      = Calibri-Italic,
-    BoldItalicFont  = Calibri-BoldItalic
-]{Calibri-Regular}
+    UprightFont     = *-Regular,
+    BoldFont        = *-Bold,
+    ItalicFont      = *-Italic,
+    BoldItalicFont  = *-BoldItalic
+]{Calibri}
 \babelfont{tt}[
     Extension       = .ttf,
-    BoldFont        = Consola-Bold,
-    ItalicFont      = Consola-Italic,
-    BoldItalicFont  = Consola-BoldItalic
-]{Consola-Regular}
+    UprightFont     = *-Regular,
+    BoldFont        = *-Bold,
+    ItalicFont      = *-Italic,
+    BoldItalicFont  = *-BoldItalic
+]{Consola}
 \fi
 
 \setlocalecaption{english}{theorem}{Theorem}
@@ -326,94 +338,106 @@
 \ifhtpcls@plain
 \setCJKmainfont[
     Extension       = .otf,
-    BoldFont        = FandolSong-Bold,
-    ItalicFont      = FandolKai-Regular,
-    SmallCapsFont   = FandolSong-Regular,
-    BoldItalicFont  = FandolKai-Regular
-]{FandolSong-Regular}
+    UprightFont     = *Song-Regular
+    BoldFont        = *Song-Bold,
+    ItalicFont      = *Kai-Regular,
+    SmallCapsFont   = *Song-Regular,
+    BoldItalicFont  = *Kai-Regular
+]{Fandol}
 \setCJKsansfont[
     Extension       = .otf,
-    BoldFont        = FandolHei-Bold,
-    ItalicFont      = FandolHei-Regular,
-    SmallCapsFont   = FandolHei-Regular,
-    BoldItalicFont  = FandolHei-Bold
-]{FandolHei-Regular}
+    UprightFont     = *-Regular
+    BoldFont        = *-Bold,
+    ItalicFont      = *-Regular,
+    SmallCapsFont   = *-Regular,
+    BoldItalicFont  = *-Bold
+]{FandolHei}
 \setCJKmonofont[
     Extension       = .otf,
-    BoldFont        = FandolFang-Regular,
-    ItalicFont      = FandolFang-Regular,
-    SmallCapsFont   = FandolFang-Regular,
-    BoldItalicFont  = FandolFang-Regular
-]{FandolFang-Regular}
+    UprightFont     = *-Regular,
+    BoldFont        = *-Regular,
+    ItalicFont      = *-Regular,
+    SmallCapsFont   = *-Regular,
+    BoldItalicFont  = *-Regular
+]{FandolFang}
 \fi
 \ifhtpcls@minion
 \setCJKmainfont[
     Extension       = .otf,
-    BoldFont        = AdobeSongStd-Light,
-    ItalicFont      = AdobeKaitiStd-Regular,
-    SmallCapsFont   = AdobeSongStd-Light,
-    BoldItalicFont  = AdobeKaitiStd-Regular
-]{AdobeSongStd-Light}
+    UprightFont     = *SongStd-Light,
+    BoldFont        = *SongStd-Light,
+    ItalicFont      = *KaitiStd-Regular,
+    SmallCapsFont   = *SongStd-Light,
+    BoldItalicFont  = *KaitiStd-Regular
+]{Adobe}
 \setCJKsansfont[
     Extension       = .otf,
-    BoldFont        = AdobeHeitiStd-Regular,
-    ItalicFont      = AdobeHeitiStd-Regular,
-    SmallCapsFont   = AdobeHeitiStd-Regular,
-    BoldItalicFont  = AdobeHeitiStd-Regular
-]{AdobeHeitiStd-Regular}
+    UprightFont     = *-Regular,
+    BoldFont        = *-Regular,
+    ItalicFont      = *-Regular,
+    SmallCapsFont   = *-Regular,
+    BoldItalicFont  = *-Regular
+]{AdobeHeitiStd}
 \setCJKmonofont[
     Extension       = .otf,
-    BoldFont        = AdobeFangsongStd-Regular,
-    ItalicFont      = AdobeFangsongStd-Regular,
-    SmallCapsFont   = AdobeFangsongStd-Regular,
-    BoldItalicFont  = AdobeFangsongStd-Regular
-]{AdobeFangsongStd-Regular}
+    UprightFont     = *-Regular,
+    BoldFont        = *-Regular,
+    ItalicFont      = *-Regular,
+    SmallCapsFont   = *-Regular,
+    BoldItalicFont  = *-Regular
+]{AdobeFangsongStd}
 \fi
 \ifhtpcls@notosans
 \setCJKmainfont[
     Extension       = .otf,
-    BoldFont        = NotoSerifCJKsc-Bold,
-    ItalicFont      = NotoSerifCJKsc-Regular,
-    SmallCapsFont   = NotoSerifCJKsc-Regular,
-    BoldItalicFont  = NotoSerifCJKsc-Bold
-]{NotoSerifCJKsc-Regular}
+    UprightFont     = *-Regular,
+    BoldFont        = *-Bold,
+    ItalicFont      = *-Regular,
+    SmallCapsFont   = *-Regular,
+    BoldItalicFont  = *-Bold
+]{NotoSerifCJKsc}
 \setCJKsansfont[
     Extension       = .otf,
-    BoldFont        = NotoSansCJKsc-Bold,
-    ItalicFont      = NotoSansCJKsc-Regular,
-    SmallCapsFont   = NotoSansCJKsc-Regular,
-    BoldItalicFont  = NotoSansCJKsc-Bold
-]{NotoSansCJKsc-Regular}
+    UprightFont     = *-Regular,
+    BoldFont        = *-Bold,
+    ItalicFont      = *-Regular,
+    SmallCapsFont   = *-Regular,
+    BoldItalicFont  = *-Bold
+]{NotoSansCJKsc}
 \setCJKmonofont[
     Extension       = .otf,
-    BoldFont        = NotoSansMonoCJKsc-Bold,
-    ItalicFont      = NotoSansMonoCJKsc-Regular,
-    SmallCapsFont   = NotoSansMonoCJKsc-Regular,
-    BoldItalicFont  = NotoSansMonoCJKsc-Bold
-]{NotoSansMonoCJKsc-Regular}
+    UprightFont     = *-Regular,
+    BoldFont        = *-Bold,
+    ItalicFont      = *-Regular,
+    SmallCapsFont   = *-Regular,
+    BoldItalicFont  = *-Bold
+]{NotoSansMonoCJKsc}
 \fi
 \ifhtpcls@cambria
 \setCJKmainfont[
     Extension       = .ttf,
-    BoldFont        = MicrosoftYaHei-Bold,
-    ItalicFont      = MicrosoftYaHei-Regular,
-    SmallCapsFont   = MicrosoftYaHei-Regular,
-    BoldItalicFont  = MicrosoftYaHei-Bold
-]{MicrosoftYaHei-Regular}
+    UprightFont     = *-Regular,
+    BoldFont        = *-Bold,
+    ItalicFont      = *-Regular,
+    SmallCapsFont   = *-Regular,
+    BoldItalicFont  = *-Bold
+]{MicrosoftYaHei}
 \setCJKsansfont[
     Extension       = .ttf,
-    BoldFont        = MicrosoftYaHei-Bold,
-    ItalicFont      = MicrosoftYaHei-Regular,
-    SmallCapsFont   = MicrosoftYaHei-Regular,
-    BoldItalicFont  = MicrosoftYaHei-Bold
-]{MicrosoftYaHei-Regular}
+    UprightFont     = *-Regular,
+    BoldFont        = *-Bold,
+    ItalicFont      = *-Regular,
+    SmallCapsFont   = *-Regular,
+    BoldItalicFont  = *-Bold
+]{MicrosoftYaHei}
 \setCJKmonofont[
     Extension       = .ttf,
-    BoldFont        = MicrosoftYaHei-Bold,
-    ItalicFont      = MicrosoftYaHei-Regular,
-    SmallCapsFont   = MicrosoftYaHei-Regular,
-    BoldItalicFont  = MicrosoftYaHei-Bold
-]{MicrosoftYaHei-Regular}
+    UprightFont     = *-Regular,
+    BoldFont        = *-Bold,
+    ItalicFont      = *-Regular,
+    SmallCapsFont   = *-Regular,
+    BoldItalicFont  = *-Bold
+]{MicrosoftYaHei}
 \fi
 
 %%%%%%%%%%%%%%%% Preamble %%%%%%%%%%%%%%%%
@@ -493,13 +517,26 @@
 \fi
 \ifhtpcls@minion
 \setmathfont[
-    Extension=.otf,
-    SizeFeatures={
-        {Size=8.4-,TextStyle},
-        {Size=6-8.4,Font=MinionMath-Capt,ScriptStyle},
-        {Size=-6,Font=MinionMath-Tiny,ScriptScriptStyle}
+    Extension = .otf,
+    SizeFeatures = {
+        {Size = -6, Font = MinionMath-Tiny, Style = MathScriptScript},
+        {Size = 6-8.4, Font = MinionMath-Capt, Style = MathScript},
+        {Size = 8.4-13, Font = MinionMath-Regular},
+        {Size = 13-19.9, Font = MinionMath-Subh},
+        {Size = 19.9-, Font = MinionMath-Disp}
     }
 ]{MinionMath-Regular}
+\setmathfont[
+    Extension = .otf,
+    range = {bfup->up, bfit->it, bfcal->cal, bfscr->scr, bffrak->frak},
+    SizeFeatures = {
+        {Size = -6, Font = MinionMath-BoldTiny, Style = MathScriptScript},
+        {Size = 6-8.4, Font = MinionMath-BoldCapt, Style = MathScript},
+        {Size = 8.4-13, Font = MinionMath-Bold},
+        {Size = 13-19.9, Font = MinionMath-BoldSubh},
+        {Size = 19.9-, Font = MinionMath-BoldDisp}
+    }
+]{MinionMath-Bold}
 \fi
 \ifhtpcls@notosans
 \setmathfont[Extension=.otf,StylisticSet=2]{NotoSansMath-Regular}
@@ -583,7 +620,7 @@
 
 \ifhtpcls@idx
 \indexsetup{noclearpage,firstpagestyle=\ifhtpcls@hdr fancy\else plain\fi}
-\makeindex[intoc,columns=\ifhtpcls@twocol1\else2\fi]
+\makeindex[intoc,columns=\ifhtpcls@twocol1\else2\fi,columnseprule]
 \fi
 
 %%%%%%%%%%%%%%%% Front Matter and Back Matter %%%%%%%%%%%%%%%%
