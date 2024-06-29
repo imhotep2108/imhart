@@ -51,9 +51,16 @@ Three additional font configurations are included in the package. Users will nee
     - `AdobeHeitiStd-Regular.otf`
     - `AdobeFangsongStd-Regular.otf`
   - **Math**
-    - `MinionMath-Regular.otf`
-    - `MinionMath-Capt.otf`
     - `MinionMath-Tiny.otf`
+    - `MinionMath-BoldTiny.otf`
+    - `MinionMath-Capt.otf`
+    - `MinionMath-BoldCapt.otf`
+    - `MinionMath-Regular.otf`
+    - `MinionMath-Bold.otf`
+    - `MinionMath-Subh.otf`
+    - `MinionMath-BoldSubh.otf`
+    - `MinionMath-Disp.otf`
+    - `MinionMath-BoldDisp.otf`
 - **Noto Sans**
   - **LGC**
     - `NotoSerif-Regular.ttf`
