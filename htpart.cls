@@ -338,7 +338,7 @@
 \ifhtpcls@plain
 \setCJKmainfont[
     Extension       = .otf,
-    UprightFont     = *Song-Regular
+    UprightFont     = *Song-Regular,
     BoldFont        = *Song-Bold,
     ItalicFont      = *Kai-Regular,
     SmallCapsFont   = *Song-Regular,
@@ -346,7 +346,7 @@
 ]{Fandol}
 \setCJKsansfont[
     Extension       = .otf,
-    UprightFont     = *-Regular
+    UprightFont     = *-Regular,
     BoldFont        = *-Bold,
     ItalicFont      = *-Regular,
     SmallCapsFont   = *-Regular,
