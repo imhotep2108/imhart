@@ -1,3 +1,5 @@
+⚠️ The author has ceased to use LaTeX and has therefore taken the decision to discontinue the maintenance of this repository. ⚠️
+
 # htpcls
 
 Welcome to the [`htpcls`](https://github.com/papyrus2108/htpcls) repository! This repository contains a LaTeX document class package designed to provide a versatile and elegant solution for writing articles and books.
